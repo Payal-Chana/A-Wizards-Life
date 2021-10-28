@@ -104,6 +104,8 @@ public class FungusTrigger : MonoBehaviour
         if (IsTaggedCorrectly(other.gameObject)) { Trigger(); }
     }
 
+
+
     void OnCollisionEnter(Collision collision)
     {
         if (IsTaggedCorrectly(collision.gameObject)) { Trigger(); }

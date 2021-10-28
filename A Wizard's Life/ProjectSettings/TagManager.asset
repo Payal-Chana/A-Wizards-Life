@@ -7,6 +7,9 @@ TagManager:
   - Laser
   - Enemy
   - item
+  - Yuri
+  - Margoth
+  - Helia
   layers:
   - Default
   - TransparentFX
