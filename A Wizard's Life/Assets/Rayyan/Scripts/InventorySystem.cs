@@ -10,14 +10,28 @@ public class InventorySystem : MonoBehaviour
     public GameObject[] PlayerItems;
     [Header("Inventory UI")]
     public float Open_Close;//close= 0 & open=1;
+    public float Open_CloseCraft;
     public GameObject PickUpText;
     [SerializeField] GameObject HandBookUI_Handler;
+    [SerializeField] GameObject Crafting;
     [Header("InventoryCount")]
     public Text tempText;
     public Text SugarCount;
     public Text DaisiesCount;
     public Text WolfsBaneCount;
     public Text LavaWeedCount;
+    public Text WaterCount;
+    public Text CoffeeCount;
+    public Text ChilliCount;
+    [Header("Crafting")]
+    public GameObject Potion;
+    public GameObject CraftingItem1;
+    public GameObject CraftingItem2;
+    public int RequiredItemCount1;
+    public int RequiredItemCount2;
+    public bool CanCraft = false;
+
+
 
     #region Pickup Item 
     private void OnTriggerStay(Collider other)
@@ -49,6 +63,11 @@ public class InventorySystem : MonoBehaviour
         MyList.Add(currentItem);
 
     }
+    public void RemoveItem(GameObject currentItem)
+    {
+        MyList.Remove(currentItem);
+
+    }
     #endregion
     private void Update()
     {
@@ -76,10 +95,35 @@ public class InventorySystem : MonoBehaviour
 
         }
         #endregion
+        #region Display Crafting
+        if (Input.GetKeyDown(KeyCode.C) && Open_CloseCraft == 0)
+        {
+            CheckInventory();
+            Crafting.SetActive(true);
+            StartCoroutine(OpenOrCloseCrafting());
+            string result = "My Iventory: ";
 
-        if (Input.GetKeyDown(KeyCode.T))
+            /* foreach (GameObject x in MyList)
+             {
+                 string temp;
+                 temp = x.name;
+                 result += "\n " + temp.ToString();
+
+             }
+             Debug.Log(result);*/
+        }
+        else if (Input.GetKeyDown(KeyCode.I) && Open_CloseCraft == 1)
+        {
+            StartCoroutine(OpenOrCloseCrafting());
+            Crafting.SetActive(false);
+
+        }
+            #endregion
+
+            if (Input.GetKeyDown(KeyCode.T))
         {
             Debug.Log("Test Success!");
+            //Debug.Log(DaisiesCount.text);
             //CheckInventory();
         }
     }
@@ -92,7 +136,8 @@ public class InventorySystem : MonoBehaviour
         {
             //Debug.Log("closed");
             Open_Close = 1;
-
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             yield return null;
 
             //  yield return new WaitForSeconds(2);
@@ -101,16 +146,44 @@ public class InventorySystem : MonoBehaviour
         {
             //Debug.Log("Open");
             Open_Close = 0;
-
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+           
             yield return null;
             //yield return new WaitForSeconds(2);
         }
 
     }
-    #endregion
-    #region InventoryCheck Routine
-    void CheckInventory()
+        IEnumerator OpenOrCloseCrafting()
+        {
+
+            if (Open_CloseCraft == 0)
+            {
+                //Debug.Log("closed");
+                Open_CloseCraft = 1;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            yield return null;
+
+                //  yield return new WaitForSeconds(2);
+            }
+            else
+            {
+                //Debug.Log("Open");
+                Open_CloseCraft = 0;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            
+            yield return null;
+                //yield return new WaitForSeconds(2);
+            }
+
+        }
+        #endregion
+        #region InventoryCheck Routine
+        void CheckInventory()
     {
+        //checks how much of each item there is in the iventory 
         foreach (GameObject x in MyList)
         {
             string temp;
@@ -146,7 +219,128 @@ public class InventorySystem : MonoBehaviour
             {
                 LavaWeedCount.text = " " + tempNum;
             }
+            else if (temp == "CoffeeBean")
+            {
+                CoffeeCount.text = " " + tempNum;
+            }
+            else if (temp == "Water")
+            {
+                WaterCount.text = " " + tempNum;
+            }
+            else if (temp == "Chilli")
+            {
+                ChilliCount.text = " " + tempNum;
+            }
+        }
+    }
+    #endregion
+    #region Crafting System
+    public void CallCraftSystem()
+    {
+        CraftSystem(CraftingItem1, CraftingItem2, Potion, RequiredItemCount1, RequiredItemCount2);
+    }
+    public void CraftSystem(GameObject itemToUse1, GameObject itemToUse2, GameObject PotionToCraft, int requiredCount1, int requiredCount2)
+    { 
 
+      /* itemToUse1= CraftingItem1;
+       itemToUse2= CraftingItem2;
+       PotionToCraft= Potion;
+
+       requiredCount1= RequiredItemCount1;
+       requiredCount2= RequiredItemCount2;
+       */
+        int count1=0;
+        int count2=0;
+        // CheckItemCount()
+        #region item1
+        if (itemToUse1.name == "Daisies")
+        {
+            count1 = int.Parse(DaisiesCount.text);
+        }
+        else if (itemToUse1.name == "Sugar")
+        {
+            count1 = int.Parse(SugarCount.text);
+        }
+        else if (itemToUse1.name == "WolfsBane")
+        {
+            count1 = int.Parse(WolfsBaneCount.text);
+        }
+        else if (itemToUse1.name == "LavaWeed")
+        {
+            count1 = int.Parse(LavaWeedCount.text);
+        }
+        else if (itemToUse1.name == "CoffeeBean")
+        {
+            count1 = int.Parse(CoffeeCount.text);
+        }
+        else if (itemToUse1.name == "Water")
+        {
+            count1 = int.Parse(WaterCount.text);
+        }
+        else if (itemToUse1.name == "Chilli")
+        {
+            count1 = int.Parse(ChilliCount.text);
+        }
+        #endregion
+        #region item2
+        if (itemToUse2.name == "Daisies")
+        {
+            count2 = int.Parse(DaisiesCount.text);
+        }
+        else if (itemToUse2.name == "Sugar")
+        {
+            count2 = int.Parse(SugarCount.text);
+        }
+        else if (itemToUse2.name == "WolfsBane")
+        {
+            count2 = int.Parse(WolfsBaneCount.text);
+        }
+        else if (itemToUse2.name == "LavaWeed")
+        {
+            count2 = int.Parse(LavaWeedCount.text);
+        }
+        else if (itemToUse2.name == "CoffeeBean")
+        {
+            count2 = int.Parse(CoffeeCount.text);
+        }
+        else if (itemToUse2.name == "Water")
+        {
+            count2 = int.Parse(WaterCount.text);
+        }
+        else if (itemToUse2.name == "Chilli")
+        {
+            count2 = int.Parse(ChilliCount.text);
+        }
+        #endregion        
+        CheckItemCount(requiredCount1, requiredCount2, count1, count2);
+        if(CanCraft== true)
+        {
+            CraftPotion(itemToUse1, itemToUse2, PotionToCraft);
+        }
+        else if(CanCraft== false)
+        {
+            Debug.Log("count1=" + count1 + " Req" + RequiredItemCount1);
+            Debug.Log("count2=" + count2 + " Req" + RequiredItemCount2);
+            Debug.Log("can not Craft");
+        }
+        
+    }
+    public void CraftPotion(GameObject itemToUse1, GameObject itemToUse2, GameObject PotionToCraft)
+    {
+        RemoveItem(itemToUse1);
+        RemoveItem(itemToUse2);
+        AddItem(PotionToCraft);
+        CheckInventory();
+    }
+     void CheckItemCount(int requiredCount1, int requiredCount2, int ItemCount1, int ItemCount2)
+    {
+        if(ItemCount1== requiredCount1 && ItemCount2== requiredCount2)
+        {
+            CanCraft = true;
+        }
+        else
+        {
+            CanCraft = false; 
         }
     }
     #endregion
