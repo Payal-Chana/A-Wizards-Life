@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float gravityValue = -9.81f;
 
 
+    //respawn
+    public GameObject targetRespawn;
+    public GameObject Player;
 
     CharacterController controller;
     Vector3 playerVelocity;
@@ -58,6 +61,17 @@ public class PlayerController : MonoBehaviour
             float target = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg + camra.eulerAngles.y;
             Quaternion rot = Quaternion.Euler(0f, target, 0f);
             transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * rotSpeed);
+        }
+    }
+
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Water")
+        {
+            Debug.Log("Respawn");
+            Debug.Log(targetRespawn.transform.position);
+            transform.position = targetRespawn.transform.position;
         }
     }
 

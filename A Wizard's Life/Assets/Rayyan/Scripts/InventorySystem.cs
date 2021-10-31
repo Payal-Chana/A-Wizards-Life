@@ -205,30 +205,37 @@ public class InventorySystem : MonoBehaviour
             }
             if (temp == "Daisies")
             {
+                DaisiesCount.text = "0";
                 DaisiesCount.text = " " + tempNum;
             }
             else if (temp == "Sugar")
             {
+                SugarCount.text = "0";
                 SugarCount.text = " " + tempNum;
             }
             else if (temp == "WolfsBane")
-            {
+            { 
+                WolfsBaneCount.text = "0";
                 WolfsBaneCount.text = " " + tempNum;
             }
             else if (temp == "LavaWeed")
             {
+                LavaWeedCount.text = "0";
                 LavaWeedCount.text = " " + tempNum;
             }
             else if (temp == "CoffeeBean")
             {
+                CoffeeCount.text = "0";
                 CoffeeCount.text = " " + tempNum;
             }
             else if (temp == "Water")
             {
+                WaterCount.text = "0";
                 WaterCount.text = " " + tempNum;
             }
             else if (temp == "Chilli")
             {
+                ChilliCount.text = "0";
                 ChilliCount.text = " " + tempNum;
             }
         }
@@ -240,15 +247,16 @@ public class InventorySystem : MonoBehaviour
         CraftSystem(CraftingItem1, CraftingItem2, Potion, RequiredItemCount1, RequiredItemCount2);
     }
     public void CraftSystem(GameObject itemToUse1, GameObject itemToUse2, GameObject PotionToCraft, int requiredCount1, int requiredCount2)
-    { 
+    {
 
-      /* itemToUse1= CraftingItem1;
-       itemToUse2= CraftingItem2;
-       PotionToCraft= Potion;
+        /* itemToUse1= CraftingItem1;
+         itemToUse2= CraftingItem2;
+         PotionToCraft= Potion;
 
-       requiredCount1= RequiredItemCount1;
-       requiredCount2= RequiredItemCount2;
-       */
+         requiredCount1= RequiredItemCount1;
+         requiredCount2= RequiredItemCount2;
+         */
+        CheckInventory();
         int count1=0;
         int count2=0;
         // CheckItemCount()
