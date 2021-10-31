@@ -8,6 +8,7 @@ public class InventorySystem : MonoBehaviour
     [Header("Inventory")]
     public List<GameObject> MyList = new List<GameObject>();
     public GameObject[] PlayerItems;
+    public GameObject DummyItem;
     [Header("Inventory UI")]
     public float Open_Close;//close= 0 & open=1;
     public float Open_CloseCraft;
@@ -31,7 +32,10 @@ public class InventorySystem : MonoBehaviour
     public int RequiredItemCount2;
     public bool CanCraft = false;
 
-
+    private void Start()
+    {
+        MyList.Add(DummyItem);
+    }
 
     #region Pickup Item 
     private void OnTriggerStay(Collider other)
@@ -60,7 +64,9 @@ public class InventorySystem : MonoBehaviour
     }
     public void AddItem(GameObject currentItem)
     {
+        MyList.RemoveAt(MyList.Count-1);
         MyList.Add(currentItem);
+        MyList.Add(DummyItem);
 
     }
     public void RemoveItem(GameObject currentItem)
@@ -79,14 +85,6 @@ public class InventorySystem : MonoBehaviour
             StartCoroutine(OpenOrClose());
             string result = "My Iventory: ";
 
-           /* foreach (GameObject x in MyList)
-            {
-                string temp;
-                temp = x.name;
-                result += "\n " + temp.ToString();
-
-            }
-            Debug.Log(result);*/
         }
         else if (Input.GetKeyDown(KeyCode.I) && Open_Close == 1)
         {
@@ -103,14 +101,6 @@ public class InventorySystem : MonoBehaviour
             StartCoroutine(OpenOrCloseCrafting());
             string result = "My Iventory: ";
 
-            /* foreach (GameObject x in MyList)
-             {
-                 string temp;
-                 temp = x.name;
-                 result += "\n " + temp.ToString();
-
-             }
-             Debug.Log(result);*/
         }
         else if (Input.GetKeyDown(KeyCode.I) && Open_CloseCraft == 1)
         {
@@ -192,7 +182,7 @@ public class InventorySystem : MonoBehaviour
             int tempNum = 0;
             string tempString = " ";
          
-            for (int i= 0; i<MyList.Count; i++)
+            for (int i= 0; i<MyList.Count-2 ; i++)
             {
                 if (temp == MyList[i].name)
                 {  
@@ -316,7 +306,7 @@ public class InventorySystem : MonoBehaviour
         CheckItemCount(requiredCount1, requiredCount2, count1, count2);
         if(CanCraft== true)
         {
-            CraftPotion(itemToUse1, itemToUse2, PotionToCraft);
+            CraftPotion(itemToUse1, itemToUse2, PotionToCraft, requiredCount1, requiredCount2);
             Debug.Log("count1=" + count1 + " Req" + RequiredItemCount1);
             Debug.Log("count2=" + count2 + " Req" + RequiredItemCount2);
 
@@ -329,10 +319,38 @@ public class InventorySystem : MonoBehaviour
         }
         
     }
-    public void CraftPotion(GameObject itemToUse1, GameObject itemToUse2, GameObject PotionToCraft)
+    public void CraftPotion(GameObject itemToUse1, GameObject itemToUse2, GameObject PotionToCraft, int obj1, int obj2)
     {
-        RemoveItem(itemToUse1);
-        RemoveItem(itemToUse2);
+        for (int i = 0; i < obj1; i++)
+        {
+            foreach(GameObject x in MyList)
+            {
+                if(itemToUse1.name== x.name)
+                {
+                    MyList.Remove(x);
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }
+        for (int i = 0; i < obj2; i++)
+        {
+            foreach (GameObject x in MyList)
+            {
+                if (itemToUse2.name == x.name)
+                {
+                    MyList.Remove(x);
+                    break;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+        }
         AddItem(PotionToCraft);
         CheckInventory();
     }
