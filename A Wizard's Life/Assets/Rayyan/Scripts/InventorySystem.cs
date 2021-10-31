@@ -123,8 +123,8 @@ public class InventorySystem : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.T))
         {
             Debug.Log("Test Success!");
-            //Debug.Log(DaisiesCount.text);
-            //CheckInventory();
+            Debug.Log(WaterCount.text);
+            CheckInventory();
         }
     }
 
@@ -249,13 +249,6 @@ public class InventorySystem : MonoBehaviour
     public void CraftSystem(GameObject itemToUse1, GameObject itemToUse2, GameObject PotionToCraft, int requiredCount1, int requiredCount2)
     {
 
-        /* itemToUse1= CraftingItem1;
-         itemToUse2= CraftingItem2;
-         PotionToCraft= Potion;
-
-         requiredCount1= RequiredItemCount1;
-         requiredCount2= RequiredItemCount2;
-         */
         CheckInventory();
         int count1=0;
         int count2=0;
@@ -324,6 +317,9 @@ public class InventorySystem : MonoBehaviour
         if(CanCraft== true)
         {
             CraftPotion(itemToUse1, itemToUse2, PotionToCraft);
+            Debug.Log("count1=" + count1 + " Req" + RequiredItemCount1);
+            Debug.Log("count2=" + count2 + " Req" + RequiredItemCount2);
+
         }
         else if(CanCraft== false)
         {
@@ -342,7 +338,7 @@ public class InventorySystem : MonoBehaviour
     }
      void CheckItemCount(int requiredCount1, int requiredCount2, int ItemCount1, int ItemCount2)
     {
-        if(ItemCount1== requiredCount1 && ItemCount2== requiredCount2)
+        if(ItemCount1>= requiredCount1 && ItemCount2>= requiredCount2)
         {
             CanCraft = true;
         }
