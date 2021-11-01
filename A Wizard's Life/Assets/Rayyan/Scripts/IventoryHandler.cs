@@ -48,11 +48,9 @@ public class IventoryHandler : MonoBehaviour
         #region Display Inventory
         if (Input.GetKeyDown(KeyCode.I) && Open_Close == 0)
         {
-            
             HandBookUI_Handler.SetActive(true);
             StartCoroutine(OpenOrClose());
             string result = "My Iventory: ";
-
         }
         else if (Input.GetKeyDown(KeyCode.I) && Open_Close == 1)
         {
@@ -61,8 +59,8 @@ public class IventoryHandler : MonoBehaviour
             Bookcounter += 1;
             TutorialInstruction.SetActive(false);
             Debug.Log("It should go away!");
-
         }
+
         #endregion
         #region Display Crafting
         if (Input.GetKeyDown(KeyCode.I) && Open_CloseCraft == 0)
@@ -101,7 +99,7 @@ public class IventoryHandler : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
-        else if (IntroNarrative.GetBooleanVariable("mouseLock") == false)
+        else if (IntroNarrative.GetBooleanVariable("mouseLock") == false && Open_CloseCraft == 0)
         {
             playerController.canPlayerMove = true;
             Cursor.lockState = CursorLockMode.Locked;
@@ -403,7 +401,6 @@ public class IventoryHandler : MonoBehaviour
 
         if (Open_CloseCraft == 0)
         {
-            Debug.Log("this has run");
             //Debug.Log("closed");
             Open_CloseCraft = 1;
             Cursor.lockState = CursorLockMode.None;
@@ -412,7 +409,7 @@ public class IventoryHandler : MonoBehaviour
 
             //  yield return new WaitForSeconds(2);
         }
-        else if (Open_CloseCraft == 1)
+        else
         {
             //Debug.Log("Open");
             Open_CloseCraft = 0;
