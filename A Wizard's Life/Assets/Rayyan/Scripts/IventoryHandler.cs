@@ -38,6 +38,7 @@ public class IventoryHandler : MonoBehaviour
     public bool hasWater;
     public bool hasCoffeeBeans;
     public Flowchart SpeedPotion;
+    public Fungus.Flowchart IntroNarrative;
     public GameObject TutorialInstruction;
     public int Bookcounter;
 
@@ -92,6 +93,22 @@ public class IventoryHandler : MonoBehaviour
 
 
         #endregion
+
+        if (IntroNarrative.GetBooleanVariable("mouseLock") == true)  //IntroNarrative.SetBooleanVariable("mouseLock", true))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            // Open_CloseCraft = 0;
+            //OpenOrCloseCrafting();
+            Debug.Log("AAAAAAA");
+        }
+        else if (IntroNarrative.GetBooleanVariable("mouseLock") == false)
+        {
+            //Open_CloseCraft = 0;
+            //OpenOrCloseCrafting();
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
         if (Input.GetKeyDown(KeyCode.T))
         {
@@ -388,6 +405,7 @@ public class IventoryHandler : MonoBehaviour
 
         if (Open_CloseCraft == 0)
         {
+            Debug.Log("this has run");
             //Debug.Log("closed");
             Open_CloseCraft = 1;
             Cursor.lockState = CursorLockMode.None;
@@ -396,7 +414,7 @@ public class IventoryHandler : MonoBehaviour
 
             //  yield return new WaitForSeconds(2);
         }
-        else
+        else if (Open_CloseCraft == 1)
         {
             //Debug.Log("Open");
             Open_CloseCraft = 0;
@@ -408,6 +426,7 @@ public class IventoryHandler : MonoBehaviour
         }
 
     }
+
     #endregion
 }
 
