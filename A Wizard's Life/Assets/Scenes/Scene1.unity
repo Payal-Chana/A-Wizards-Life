@@ -21602,9 +21602,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1645777854}
+  - {fileID: 1645777852}
   selectedCommands:
-  - {fileID: 1645777858}
+  - {fileID: 1645777839}
   variables:
   - {fileID: 1645777836}
   - {fileID: 1645777845}
@@ -21634,8 +21634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 25
   indentLevel: 0
-  storyText: I wonder what I could try out, I'm sure I can find something to make
-    a potion with.
+  storyText: Let me go see if I can find those coffee beans.
   description: 
   character: {fileID: 1074271373}
   portrait: {fileID: 0}
@@ -21762,7 +21761,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 59
   indentLevel: 0
-  storyText: Let's make this speed potion! Come on Blythe, you got this.
+  storyText: Alright, I have the water. Let's make this speed potion! Come on Blythe,
+    you got this.
   description: 
   character: {fileID: 1074271373}
   portrait: {fileID: 0}
@@ -22108,8 +22108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 45
   indentLevel: 0
-  storyText: Okay, let's see the recipe first... then I can decide. I mean there's
-    not rush anyway.
+  storyText: Let's see the recipe first... then I can decide if I want to give it
+    a try. I mean there's not rush anyway.
   description: 
   character: {fileID: 1074271373}
   portrait: {fileID: 0}
@@ -22166,7 +22166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 44
   indentLevel: 0
-  storyText: Oh these coffee beans might work! I'm sure I can make a potion with
+  storyText: Oh here are the coffee beans! I'm sure I can make a speed potion with
     this, but I hope I don't mess it up.
   description: 
   character: {fileID: 1074271373}
@@ -22413,7 +22413,7 @@ MonoBehaviour:
   targetGameObjectOLD: {fileID: 0}
 --- !u!114 &1645777858
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -28683,6 +28683,8 @@ GameObject:
   - component: {fileID: 1730342659}
   - component: {fileID: 1730342663}
   - component: {fileID: 1730342664}
+  - component: {fileID: 1730342665}
+  - component: {fileID: 1730342666}
   m_Layer: 0
   m_Name: Intro Flowchart
   m_TagString: Untagged
@@ -28735,7 +28737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 536.1989, y: 37.998917}
+  scrollPos: {x: 473.59375, y: -14.901093}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 500.4
@@ -28747,9 +28749,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1730342617}
+  - {fileID: 1730342620}
   selectedCommands:
-  - {fileID: 1730342616}
+  - {fileID: 1730342656}
   variables:
   - {fileID: 1730342636}
   - {fileID: 1730342642}
@@ -29622,6 +29624,8 @@ MonoBehaviour:
   - {fileID: 1730342653}
   - {fileID: 1730342647}
   - {fileID: 1730342645}
+  - {fileID: 1730342666}
+  - {fileID: 1730342665}
   - {fileID: 1730342646}
   - {fileID: 1730342644}
   - {fileID: 1730342643}
@@ -30253,8 +30257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 51
   indentLevel: 0
-  storyText: I'll be right here if you need me, for anything. Just do whatever makes
-    you happy, that's all that matters.
+  storyText: 'I''ll be right here if you need me. '
   description: 
   character: {fileID: 2145720011}
   portrait: {fileID: 0}
@@ -31418,7 +31421,7 @@ MonoBehaviour:
     vector3Val: {x: 0, y: 0, z: 0}
 --- !u!114 &1730342663
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -31661,7 +31664,7 @@ MonoBehaviour:
     vector3Val: {x: 0, y: 0, z: 0}
 --- !u!114 &1730342664
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -31677,6 +31680,62 @@ MonoBehaviour:
   blockName:
     stringRef: {fileID: 0}
     stringVal: StartGiddeonIntro
+--- !u!114 &1730342665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730342606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 63
+  indentLevel: 0
+  storyText: What did you use in them? Coffee beans wasn't it? We have some growing
+    in the garden.
+  description: 
+  character: {fileID: 2145720011}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 2057998642}
+--- !u!114 &1730342666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730342606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec422cd568a9c4a31ad7c36d0572b9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemId: 64
+  indentLevel: 0
+  storyText: 'Why don''t you try to make one of those speed potions you always liked
+    so much? '
+  description: 
+  character: {fileID: 2145720011}
+  portrait: {fileID: 0}
+  voiceOverClip: {fileID: 0}
+  showAlways: 1
+  showCount: 1
+  extendPrevious: 0
+  fadeWhenDone: 1
+  waitForClick: 1
+  stopVoiceover: 1
+  waitForVO: 0
+  setSayDialog: {fileID: 2057998642}
 --- !u!1 &1733341548
 GameObject:
   m_ObjectHideFlags: 0
