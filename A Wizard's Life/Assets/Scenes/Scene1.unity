@@ -1403,6 +1403,7 @@ MonoBehaviour:
   targetRespawn: {fileID: 2012009906}
   Player: {fileID: 217837464}
   groundedPlayer: 0
+  canPlayerMove: 1
 --- !u!143 &217837466
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1559,6 +1560,7 @@ MonoBehaviour:
   IntroNarrative: {fileID: 1730342609}
   TutorialInstruction: {fileID: 769664844}
   Bookcounter: 0
+  playerController: {fileID: 217837465}
 --- !u!65 &217837472
 BoxCollider:
   m_ObjectHideFlags: 0

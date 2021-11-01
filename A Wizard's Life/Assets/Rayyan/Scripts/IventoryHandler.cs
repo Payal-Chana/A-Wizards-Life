@@ -41,6 +41,7 @@ public class IventoryHandler : MonoBehaviour
     public Fungus.Flowchart IntroNarrative;
     public GameObject TutorialInstruction;
     public int Bookcounter;
+    public PlayerController playerController;
 
     private void Update()
     {
@@ -94,18 +95,15 @@ public class IventoryHandler : MonoBehaviour
 
         #endregion
 
-        if (IntroNarrative.GetBooleanVariable("mouseLock") == true)  //IntroNarrative.SetBooleanVariable("mouseLock", true))
+        if (IntroNarrative.GetBooleanVariable("mouseLock") == true) 
         {
+            playerController.canPlayerMove = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            // Open_CloseCraft = 0;
-            //OpenOrCloseCrafting();
-            Debug.Log("AAAAAAA");
         }
         else if (IntroNarrative.GetBooleanVariable("mouseLock") == false)
         {
-            //Open_CloseCraft = 0;
-            //OpenOrCloseCrafting();
+            playerController.canPlayerMove = true;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
