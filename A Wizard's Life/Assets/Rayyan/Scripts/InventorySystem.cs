@@ -182,7 +182,7 @@ public class InventorySystem : MonoBehaviour
             int tempNum = 0;
             string tempString = " ";
          
-            for (int i= 0; i<MyList.Count-2 ; i++)
+            for (int i= 0; i<MyList.Count-1 ; i++)
             {
                 if (temp == MyList[i].name)
                 {  
