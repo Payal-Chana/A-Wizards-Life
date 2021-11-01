@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Fungus;
 
 public class InventorySystem : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class InventorySystem : MonoBehaviour
     public int RequiredItemCount1;
     public int RequiredItemCount2;
     public bool CanCraft = false;
+
 
     private void Start()
     {
@@ -91,7 +93,6 @@ public class InventorySystem : MonoBehaviour
         {
             StartCoroutine(OpenOrClose());
             HandBookUI_Handler.SetActive(false);
-
         }
         #endregion
         #region Display Crafting
@@ -107,8 +108,10 @@ public class InventorySystem : MonoBehaviour
         {
             StartCoroutine(OpenOrCloseCrafting());
             Crafting.SetActive(false);
-
         }
+
+
+
             #endregion
 
             if (Input.GetKeyDown(KeyCode.T))

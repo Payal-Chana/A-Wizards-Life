@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Fungus;
 
 public class IventoryHandler : MonoBehaviour
 {
@@ -32,6 +33,14 @@ public class IventoryHandler : MonoBehaviour
     public int RequiredItemCount2;
     public bool CanCraft = false;
 
+
+    //Narrative things
+    public bool hasWater;
+    public bool hasCoffeeBeans;
+    public Flowchart SpeedPotion;
+    public GameObject TutorialInstruction;
+    public int Bookcounter;
+
     private void Update()
     {
         #region Display Inventory
@@ -47,6 +56,9 @@ public class IventoryHandler : MonoBehaviour
         {
             StartCoroutine(OpenOrClose());
             HandBookUI_Handler.SetActive(false);
+            Bookcounter += 1;
+            TutorialInstruction.SetActive(false);
+            Debug.Log("It should go away!");
 
         }
         #endregion
@@ -62,8 +74,23 @@ public class IventoryHandler : MonoBehaviour
         {
             StartCoroutine(OpenOrCloseCrafting());
             CraftingUI.SetActive(false);
+            Bookcounter += 1;
+            TutorialInstruction.SetActive(false);
+            Debug.Log("It should go away!");
+
+            if (Bookcounter == 2)
+            {
+                SpeedPotion.ExecuteBlock("Prompt");
+            }
+            else if (Bookcounter >= 3)
+            {
+                Bookcounter = 4;
+            }
+            
 
         }
+
+
         #endregion
 
         if (Input.GetKeyDown(KeyCode.T))
@@ -93,6 +120,10 @@ public class IventoryHandler : MonoBehaviour
             ItemCount= int.Parse(WaterCount.text);
             ItemCount++;
             WaterCount.text = " " + ItemCount;
+            if (ItemCount > 0)
+            {
+                SpeedPotion.ExecuteBlock("Water");
+            }
 
         }
         if (item.name == "CoffeeBean")
@@ -101,6 +132,12 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(CoffeeCount.text);
             ItemCount++;
             CoffeeCount.text = " " + ItemCount;
+
+            if (ItemCount > 0)
+            {
+
+                SpeedPotion.ExecuteBlock("CoffeeBean");
+            }
 
         }
         if (item.name == "Chilli")
@@ -141,7 +178,8 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(SpeedPotionCount.text);
             ItemCount++;
             SpeedPotionCount.text = " " + ItemCount;
-
+            SpeedPotion.ExecuteBlock("GotSpeedPotion");
+            
         }
     }
     #endregion
