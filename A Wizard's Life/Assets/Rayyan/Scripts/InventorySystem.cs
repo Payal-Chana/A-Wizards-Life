@@ -24,6 +24,7 @@ public class InventorySystem : MonoBehaviour
     public Text WaterCount;
     public Text CoffeeCount;
     public Text ChilliCount;
+    public Text SpeedPotionCount;
     [Header("Crafting")]
     public GameObject Potion;
     public GameObject CraftingItem1;
@@ -64,9 +65,9 @@ public class InventorySystem : MonoBehaviour
     }
     public void AddItem(GameObject currentItem)
     {
-        MyList.RemoveAt(MyList.Count-1);
+        //MyList.RemoveAt(MyList.Count-1);
         MyList.Add(currentItem);
-        MyList.Add(DummyItem);
+        //MyList.Add(DummyItem);
 
     }
     public void RemoveItem(GameObject currentItem)
@@ -94,7 +95,7 @@ public class InventorySystem : MonoBehaviour
         }
         #endregion
         #region Display Crafting
-        if (Input.GetKeyDown(KeyCode.C) && Open_CloseCraft == 0)
+        if (Input.GetKeyDown(KeyCode.I) && Open_CloseCraft == 0)
         {
             CheckInventory();
             Crafting.SetActive(true);
@@ -227,6 +228,11 @@ public class InventorySystem : MonoBehaviour
             {
                 ChilliCount.text = "0";
                 ChilliCount.text = " " + tempNum;
+            }
+            else if (temp == "SpeedPotion")
+            {
+                SpeedPotionCount.text = "0";
+                SpeedPotionCount.text = " " + tempNum;
             }
         }
     }
