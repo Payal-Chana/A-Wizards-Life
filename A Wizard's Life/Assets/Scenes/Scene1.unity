@@ -962,6 +962,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 217837464}
+    - target: {fileID: 4678365189497408911, guid: ca62f6ea1491f3a439cdf8b21ead05b2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca62f6ea1491f3a439cdf8b21ead05b2, type: 3}
 --- !u!1 &160789539
@@ -1356,7 +1360,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217837464}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5535c6d90390e7549a14c880ea813512, type: 3}
   m_Name: 
@@ -1462,10 +1466,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f479d7d507ebbe94391e4c5dad301699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SugarCount: {fileID: 0}
-  DaisiesCount: {fileID: 0}
-  WolfsBaneCount: {fileID: 0}
-  LavaWeedCount: {fileID: 0}
+  Open_Close: 0
+  Open_CloseCraft: 0
+  HandBookUI_Handler: {fileID: 712390270}
+  CraftingUI: {fileID: 1375015265}
+  tempText: {fileID: 1825560685}
+  SugarCount: {fileID: 1825560685}
+  DaisiesCount: {fileID: 846457212}
+  WolfsBaneCount: {fileID: 1444562426}
+  LavaWeedCount: {fileID: 962682418}
+  WaterCount: {fileID: 271527637}
+  CoffeeCount: {fileID: 40552732}
+  ChilliCount: {fileID: 1652251097}
+  SpeedPotionCount: {fileID: 1413805562}
+  Potion: {fileID: 0}
+  CraftingItem1: {fileID: 0}
+  CraftingItem2: {fileID: 0}
+  RequiredItemCount1: 0
+  RequiredItemCount2: 0
+  CanCraft: 0
 --- !u!65 &217837472
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5875,6 +5894,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1525139343}
     m_Modifications:
+    - target: {fileID: 2001405961052605056, guid: d46f076548ff7f442a58bf221d1e7b3e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2001405961052605057, guid: d46f076548ff7f442a58bf221d1e7b3e, type: 3}
       propertyPath: Player
       value: 
@@ -11415,7 +11438,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 218.7
     y: 82.600006
-    width: 118.18181
+    width: 117.04545
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -11680,7 +11703,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 68
     y: 70
-    width: 111.81818
+    width: 111.36363
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -11739,7 +11762,7 @@ GameObject:
   m_Component:
   - component: {fileID: 956017232}
   m_Layer: 5
-  m_Name: itemTemplate-Chilli (1)
+  m_Name: itemTemplate-SpeedPotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11988,7 +12011,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.6253968, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -16127,7 +16150,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151693417}
-  m_LocalRotation: {x: 0.09892818, y: -0.7450662, z: 0.11343427, w: 0.64978635}
+  m_LocalRotation: {x: 0.098928206, y: -0.7450662, z: 0.11343426, w: 0.64978635}
   m_LocalPosition: {x: -14.951088, y: 8.71, z: -22.4521}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -16715,6 +16738,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1525139343}
     m_Modifications:
+    - target: {fileID: 2001405961052605056, guid: d46f076548ff7f442a58bf221d1e7b3e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2001405961052605057, guid: d46f076548ff7f442a58bf221d1e7b3e, type: 3}
       propertyPath: Player
       value: 
@@ -17002,7 +17029,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.6253968, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -17018,7 +17045,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285660441}
-  m_LocalRotation: {x: 0.09892817, y: -0.74506617, z: 0.113434255, w: 0.64978635}
+  m_LocalRotation: {x: 0.09892818, y: -0.74506617, z: 0.113434255, w: 0.64978635}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -30354,8 +30381,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 217837467}
-        m_TargetAssemblyTypeName: InventorySystem, Assembly-CSharp
+      - m_Target: {fileID: 217837471}
+        m_TargetAssemblyTypeName: IventoryHandler, Assembly-CSharp
         m_MethodName: CallCraftSystem
         m_Mode: 1
         m_Arguments:
@@ -35014,7 +35041,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.6253968, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -35681,6 +35708,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 217837464}
+    - target: {fileID: 4678365189497408911, guid: ca62f6ea1491f3a439cdf8b21ead05b2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca62f6ea1491f3a439cdf8b21ead05b2, type: 3}
 --- !u!1 &2012009906
@@ -36420,7 +36451,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.6253968, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -36928,8 +36959,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 217837467}
-        m_TargetAssemblyTypeName: InventorySystem, Assembly-CSharp
+      - m_Target: {fileID: 217837471}
+        m_TargetAssemblyTypeName: IventoryHandler, Assembly-CSharp
         m_MethodName: CallCraftSystem
         m_Mode: 1
         m_Arguments:
@@ -37132,6 +37163,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1525139343}
     m_Modifications:
+    - target: {fileID: 453482804352869744, guid: 8697031ca3b005640bdec8d695be2096, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 453482804352869745, guid: 8697031ca3b005640bdec8d695be2096, type: 3}
       propertyPath: Player
       value: 
@@ -37267,6 +37302,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1525139343}
     m_Modifications:
+    - target: {fileID: 2001405961052605056, guid: d46f076548ff7f442a58bf221d1e7b3e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2001405961052605057, guid: d46f076548ff7f442a58bf221d1e7b3e, type: 3}
       propertyPath: Player
       value: 
@@ -37936,6 +37975,10 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 217837464}
+    - target: {fileID: 4678365189497408911, guid: ca62f6ea1491f3a439cdf8b21ead05b2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca62f6ea1491f3a439cdf8b21ead05b2, type: 3}
 --- !u!1001 &5290961590446939209

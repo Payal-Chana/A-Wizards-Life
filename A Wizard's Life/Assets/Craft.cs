@@ -12,11 +12,11 @@ public class Craft : MonoBehaviour
     public int RequiredCount2;
 
     public GameObject Player;
-    InventorySystem PlayerInventory;
+    IventoryHandler PlayerInventory;
     // Start is called before the first frame update
     void Start()
     {
-        PlayerInventory = Player.GetComponent<InventorySystem>();
+        PlayerInventory = Player.GetComponent<IventoryHandler>();
     }
 
     // Update is called once per frame
