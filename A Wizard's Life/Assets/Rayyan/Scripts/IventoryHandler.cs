@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Fungus;
+using Cinemachine;
 
 public class IventoryHandler : MonoBehaviour
 {
@@ -43,11 +44,20 @@ public class IventoryHandler : MonoBehaviour
     public int Bookcounter;
     public PlayerController playerController;
 
+    [Header("Camera")]
+    public CinemachineVirtualCamera Main;
+    public CinemachineFreeLook MainCam;
+    public Camera GiddeonCam;
+  
+
     private void Update()
     {
         #region Display Inventory
         if (Input.GetKeyDown(KeyCode.I) && Open_Close == 0)
         {
+            playerController.canPlayerMove = false;
+            MainCam.m_YAxis.m_MaxSpeed = 0;
+            MainCam.m_XAxis.m_MaxSpeed = 0;
             HandBookUI_Handler.SetActive(true);
             StartCoroutine(OpenOrClose());
             string result = "My Iventory: ";
@@ -55,6 +65,9 @@ public class IventoryHandler : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.I) && Open_Close == 1)
         {
             StartCoroutine(OpenOrClose());
+            playerController.canPlayerMove = true;
+            MainCam.m_YAxis.m_MaxSpeed = 1.5f;
+            MainCam.m_XAxis.m_MaxSpeed = 200;
             HandBookUI_Handler.SetActive(false);
             Bookcounter += 1;
             TutorialInstruction.SetActive(false);
@@ -95,12 +108,16 @@ public class IventoryHandler : MonoBehaviour
 
         if (IntroNarrative.GetBooleanVariable("mouseLock") == true) 
         {
+            GiddeonCam.gameObject.SetActive(true);
+            
             playerController.canPlayerMove = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
         else if (IntroNarrative.GetBooleanVariable("mouseLock") == false && Open_CloseCraft == 0)
         {
+            GiddeonCam.gameObject.SetActive(false);
+            
             playerController.canPlayerMove = true;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
