@@ -105,7 +105,13 @@ public class IventoryHandler : MonoBehaviour
 
 
         #endregion
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (Open_CloseCraft == 0) // craft is not open
+            {
+                Application.Quit();
+            }
+        }
         if (IntroNarrative.GetBooleanVariable("mouseLock") == true) 
         {
             GiddeonCam.gameObject.SetActive(true);
