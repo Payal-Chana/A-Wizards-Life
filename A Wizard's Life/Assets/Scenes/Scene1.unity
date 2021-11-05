@@ -1872,7 +1872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 1730342609}
+  selectedFlowchart: {fileID: 1063410725}
 --- !u!4 &276728244
 Transform:
   m_ObjectHideFlags: 1
@@ -12261,7 +12261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.390566, b: 0.5937108, a: 1}
+  m_Color: {r: 0.5568628, g: 0.36078432, b: 0.74509805, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -22811,7 +22811,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998443372}
-  m_LocalRotation: {x: 0.1426672, y: -1.817087e-17, z: -3.1383206e-17, w: 0.9897707}
+  m_LocalRotation: {x: 0.14266719, y: -0.000000014748735, z: 0.000000002125907, w: 0.9897707}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -27058,7 +27058,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151693417}
-  m_LocalRotation: {x: 0.11957036, y: 2.6833662e-11, z: 3.2406384e-12, w: 0.99282575}
+  m_LocalRotation: {x: 0.11957037, y: 2.0541149e-11, z: 2.4824572e-12, w: 0.99282575}
   m_LocalPosition: {x: -49.7, y: 9.5, z: -37.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -28031,7 +28031,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1285660441}
-  m_LocalRotation: {x: 0.11957037, y: -1e-45, z: -0, w: 0.99282575}
+  m_LocalRotation: {x: 0.119570374, y: -1e-45, z: -0, w: 0.99282575}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -36480,9 +36480,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1645777853}
+  - {fileID: 1645777835}
   selectedCommands:
-  - {fileID: 1645777844}
+  - {fileID: 1645777842}
   variables:
   - {fileID: 1645777836}
   - {fileID: 1645777845}
@@ -36937,8 +36937,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemId: 55
   indentLevel: 0
-  storyText: 'Okay, all I need is some water, and this should be fine. Neither of
-    these ingredients are explosive so it should be fine. '
+  storyText: Okay, all I need is some fresh water, and this should be fine. At least
+    neither of these ingredients are explosive.
   description: 
   character: {fileID: 1074271373}
   portrait: {fileID: 0}
@@ -43627,9 +43627,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1730342613}
-  selectedCommands:
-  - {fileID: 1730342656}
+  - {fileID: 1730342617}
+  selectedCommands: []
   variables:
   - {fileID: 1730342636}
   - {fileID: 1730342642}
