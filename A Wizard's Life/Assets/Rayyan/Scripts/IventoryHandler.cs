@@ -158,7 +158,21 @@ public class IventoryHandler : MonoBehaviour
             WaterCount.text = " " + ItemCount;
             if (ItemCount > 0)
             {
-                SpeedPotion.ExecuteBlock("Water");
+                SpeedPotion.SetBooleanVariable("hasCoffeeBeans", false);
+
+                if (SpeedPotion.GetBooleanVariable("hasCoffeeBeans") == false && SpeedPotion.GetBooleanVariable("hasWater") == true)
+                {
+                    SpeedPotion.ExecuteBlock("Water");
+                }
+
+                else if (SpeedPotion.GetBooleanVariable("hasCoffeeBeans") == true && SpeedPotion.GetBooleanVariable("hasWater") == false)
+                {
+                    SpeedPotion.ExecuteBlock("Water");
+                }
+                else if (SpeedPotion.GetBooleanVariable("hasCoffeeBeans") == true && SpeedPotion.GetBooleanVariable("hasWater") == true)
+                {
+                    SpeedPotion.ExecuteBlock("Prompt");
+                }
             }
 
         }
@@ -172,7 +186,21 @@ public class IventoryHandler : MonoBehaviour
             if (ItemCount > 0)
             {
 
-                SpeedPotion.ExecuteBlock("CoffeeBean");
+                SpeedPotion.SetBooleanVariable("hasCoffeeBeans", true);
+
+                if (SpeedPotion.GetBooleanVariable("hasCoffeeBeans") == false && SpeedPotion.GetBooleanVariable("hasWater") == true)
+                {
+                    SpeedPotion.ExecuteBlock("CoffeeBean");
+                }
+
+                else if (SpeedPotion.GetBooleanVariable("hasCoffeeBeans") == true && SpeedPotion.GetBooleanVariable("hasWater") == false)
+                {
+                    SpeedPotion.ExecuteBlock("CoffeeBean");
+                }
+                else if (SpeedPotion.GetBooleanVariable("hasCoffeeBeans") == true && SpeedPotion.GetBooleanVariable("hasWater") == true)
+                {
+                    SpeedPotion.ExecuteBlock("Prompt");
+                }
             }
 
         }
