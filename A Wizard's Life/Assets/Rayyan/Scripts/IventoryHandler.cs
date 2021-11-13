@@ -27,6 +27,7 @@ public class IventoryHandler : MonoBehaviour
     public Text PineSapCount;
     public Text SnowFlakeCount;
     public Text SpeedPotionCount;
+    public Text ShrinkPotionCount;
 
     [Header("Crafting")]
     public GameObject Potion;
@@ -248,6 +249,15 @@ public class IventoryHandler : MonoBehaviour
             SpeedPotion.ExecuteBlock("GotSpeedPotion");
             
         }
+        if (item.name == "ShrinkPotion")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(ShrinkPotionCount.text);
+            ItemCount++;
+            ShrinkPotionCount.text = " " + ItemCount;
+            
+
+        }
         if (item.name == "PineSap")
         {
             int ItemCount = 0;
@@ -341,6 +351,14 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(SpeedPotionCount.text);
             ItemCount--;
             SpeedPotionCount.text = " " + ItemCount;
+
+        }
+        if (item.name == "ShrinkPotion")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(ShrinkPotionCount.text);
+            ItemCount--;
+            ShrinkPotionCount.text = " " + ItemCount;
 
         }
     }
