@@ -17,13 +17,15 @@ public class IventoryHandler : MonoBehaviour
 
     [Header("InventoryCount")]
     public Text tempText;
-    public Text SugarCount;
+    public Text HeatPotionCount;
     public Text DaisiesCount;
     public Text WolfsBaneCount;
     public Text LavaWeedCount;
     public Text WaterCount;
     public Text CoffeeCount;
     public Text ChilliCount;
+    public Text PineSapCount;
+    public Text SnowFlakeCount;
     public Text SpeedPotionCount;
 
     [Header("Crafting")]
@@ -154,7 +156,7 @@ public class IventoryHandler : MonoBehaviour
         {
             int ItemCount = 0;
             ItemCount= int.Parse(WaterCount.text);
-            ItemCount++;
+            ItemCount= ItemCount + 10;
             WaterCount.text = " " + ItemCount;
             if (ItemCount > 0)
             {
@@ -213,12 +215,12 @@ public class IventoryHandler : MonoBehaviour
             ChilliCount.text = " " + ItemCount;
 
         }
-        if (item.name == "Sugar")
+        if (item.name == "HeatPotion")
         {
             int ItemCount = 0;
-            ItemCount = int.Parse(SugarCount.text);
+            ItemCount = int.Parse(HeatPotionCount.text);
             ItemCount++;
-            SugarCount.text = " " + ItemCount;
+            HeatPotionCount.text = " " + ItemCount;
 
         }
         if (item.name == "LavaWeed")
@@ -244,6 +246,23 @@ public class IventoryHandler : MonoBehaviour
             ItemCount++;
             SpeedPotionCount.text = " " + ItemCount;
             SpeedPotion.ExecuteBlock("GotSpeedPotion");
+            
+        }
+        if (item.name == "PineSap")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(PineSapCount.text);
+            ItemCount++;
+            PineSapCount.text = " " + ItemCount;
+            
+
+        }
+        if (item.name == "Snowflake")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(SnowFlakeCount.text);
+            ItemCount++;
+            SnowFlakeCount.text = " " + ItemCount;
             
         }
     }
@@ -275,12 +294,12 @@ public class IventoryHandler : MonoBehaviour
             ChilliCount.text = " " + ItemCount;
 
         }
-        if (item.name == "Sugar")
+        if (item.name == "HeatPotion")
         {
             int ItemCount = 0;
-            ItemCount = int.Parse(SugarCount.text);
+            ItemCount = int.Parse(HeatPotionCount.text);
             ItemCount--;
-            SugarCount.text = " " + ItemCount;
+            HeatPotionCount.text = " " + ItemCount;
 
         }
         if (item.name == "LavaWeed")
@@ -297,6 +316,23 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(DaisiesCount.text);
             ItemCount--;
             DaisiesCount.text = " " + ItemCount;
+
+        }
+        if (item.name == "PineSap")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(PineSapCount.text);
+            ItemCount--;
+            PineSapCount.text = " " + ItemCount;
+
+
+        }
+        if (item.name == "Snowflake")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(SnowFlakeCount.text);
+            ItemCount--;
+            SnowFlakeCount.text = " " + ItemCount;
 
         }
         if (item.name == "SpeedPotion")
@@ -325,9 +361,9 @@ public class IventoryHandler : MonoBehaviour
         {
             Count1 = int.Parse(DaisiesCount.text);
         }
-        else if (item1.name == "Sugar")
+        else if (item1.name == "Pinesap")
         {
-            Count1 = int.Parse(SugarCount.text);
+            Count1 = int.Parse(PineSapCount.text);
         }
         else if (item1.name == "WolfsBane")
         {
@@ -349,15 +385,19 @@ public class IventoryHandler : MonoBehaviour
         {
             Count1 = int.Parse(ChilliCount.text);
         }
+        else if (item1.name == "Snowflake")
+        {
+            Count1 = int.Parse(SnowFlakeCount.text);
+        }
         #endregion
         #region item2
         if (item2.name == "Daisies")
         {
             Count2 = int.Parse(DaisiesCount.text);
         }
-        else if (item2.name == "Sugar")
+        else if (item2.name == "Pinesap")
         {
-            Count2 = int.Parse(SugarCount.text);
+            Count2 = int.Parse(PineSapCount.text);
         }
         else if (item2.name == "WolfsBane")
         {
@@ -378,6 +418,10 @@ public class IventoryHandler : MonoBehaviour
         else if (item2.name == "Chilli")
         {
             Count2 = int.Parse(ChilliCount.text);
+        }
+        else if (item1.name == "Snowflake")
+        {
+            Count2 = int.Parse(SnowFlakeCount.text);
         }
         #endregion        
         CheckItemCount(RequiredCount1, RequiredCount2, Count1, Count2);
