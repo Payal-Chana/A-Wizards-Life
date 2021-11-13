@@ -7,9 +7,11 @@ public class Craft : MonoBehaviour
     //Will Use to Set variables in InventorySystem
     public GameObject Item1;
     public GameObject Item2;
+    public GameObject Item3;
     public GameObject Potion;
     public int RequiredCount1;
     public int RequiredCount2;
+    public int RequiredCount3;
 
     public GameObject Player;
     IventoryHandler PlayerInventory;
@@ -28,10 +30,14 @@ public class Craft : MonoBehaviour
     {
         PlayerInventory.CraftingItem1 = Item1;
         PlayerInventory.CraftingItem2 = Item2;
+        PlayerInventory.CraftingItem3 = Item3;
+
         PlayerInventory.Potion = Potion;
 
         PlayerInventory.RequiredItemCount1 = RequiredCount1;
         PlayerInventory.RequiredItemCount2 = RequiredCount2;
+        PlayerInventory.RequiredItemCount3 = RequiredCount3;
+
 
         
     }

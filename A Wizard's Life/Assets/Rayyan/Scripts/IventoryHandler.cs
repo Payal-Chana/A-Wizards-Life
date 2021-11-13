@@ -33,8 +33,10 @@ public class IventoryHandler : MonoBehaviour
     public GameObject Potion;
     public GameObject CraftingItem1;
     public GameObject CraftingItem2;
+    public GameObject CraftingItem3;
     public int RequiredItemCount1;
     public int RequiredItemCount2;
+    public int RequiredItemCount3;
     public bool CanCraft = false;
 
 
@@ -364,10 +366,11 @@ public class IventoryHandler : MonoBehaviour
     }
     #endregion
     #region Crafting System
-    public void Crafting(GameObject item1, GameObject item2, GameObject Potion, int RequiredCount1, int RequiredCount2)
+    public void Crafting(GameObject item1, GameObject item2, GameObject item3, GameObject Potion, int RequiredCount1, int RequiredCount2, int RequiredCount3)
     {
         int Count1 = 0;
         int Count2 = 0;
+        int Count3 = 0;
         //Text name1;
        // tempText.text = item1.name + "Count";
         //Count1 = int.Parse(tempText.text);
@@ -413,7 +416,7 @@ public class IventoryHandler : MonoBehaviour
         {
             Count2 = int.Parse(DaisiesCount.text);
         }
-        else if (item2.name == "Pinesap")
+        else if (item2.name == "PineSap")
         {
             Count2 = int.Parse(PineSapCount.text);
         }
@@ -437,26 +440,62 @@ public class IventoryHandler : MonoBehaviour
         {
             Count2 = int.Parse(ChilliCount.text);
         }
-        else if (item1.name == "Snowflake")
+        else if (item2.name == "Snowflake")
         {
             Count2 = int.Parse(SnowFlakeCount.text);
         }
-        #endregion        
-        CheckItemCount(RequiredCount1, RequiredCount2, Count1, Count2);
+        #endregion  
+        #region item3
+        if (item3.name == "Daisies")
+        {
+            Count3 = int.Parse(DaisiesCount.text);
+        }
+        else if (item3.name == "PineSap")
+        {
+            Count3 = int.Parse(PineSapCount.text);
+        }
+        else if (item3.name == "WolfsBane")
+        {
+            Count3 = int.Parse(WolfsBaneCount.text);
+        }
+        else if (item3.name == "LavaWeed")
+        {
+            Count3 = int.Parse(LavaWeedCount.text);
+        }
+        else if (item3.name == "CoffeeBean")
+        {
+            Count3 = int.Parse(CoffeeCount.text);
+        }
+        else if (item3.name == "Water")
+        {
+            Count3 = int.Parse(WaterCount.text);
+        }
+        else if (item3.name == "Chilli")
+        {
+            Count3 = int.Parse(ChilliCount.text);
+        }
+        else if (item3.name == "Snowflake")
+        {
+            Count3 = int.Parse(SnowFlakeCount.text);
+        }
+        #endregion     
+
+        CheckItemCount(RequiredCount1, RequiredCount2, RequiredCount3,Count1, Count2, Count3);
         if (CanCraft == true)
         {
-            CraftPotion(item1, item2, Potion, RequiredCount1, RequiredCount2);
+            CraftPotion(item1, item2,item3, Potion, RequiredCount1, RequiredCount2, RequiredCount3);
         }
         else if (CanCraft == false)
         {
             Debug.Log("can not Craft");
+            Debug.Log(Count1 + " + " + Count2 + " + " + Count3);
         }
 
     }
     //function Checks if we have enough ingredients to craft 
-    void CheckItemCount(int requiredCount1, int requiredCount2, int ItemCount1, int ItemCount2)
+    void CheckItemCount(int requiredCount1, int requiredCount2,int requiredCount3, int ItemCount1, int ItemCount2, int ItemCount3)
     {
-        if (ItemCount1 >= requiredCount1 && ItemCount2 >= requiredCount2)
+        if (ItemCount1 >= requiredCount1 && ItemCount2 >= requiredCount2 && ItemCount3 >= requiredCount3)
         {
             CanCraft = true;
         }
@@ -466,7 +505,7 @@ public class IventoryHandler : MonoBehaviour
         }
     }
     //removes the amount of ingredients to craft and adds the potion we need;
-     void CraftPotion(GameObject itemToUse1, GameObject itemToUse2, GameObject PotionToCraft, int obj1, int obj2)
+     void CraftPotion(GameObject itemToUse1, GameObject itemToUse2,GameObject itemToUse3, GameObject PotionToCraft, int obj1, int obj2, int obj3)
     {
         for (int i = 0; i < obj1; i++)
         {
@@ -476,13 +515,18 @@ public class IventoryHandler : MonoBehaviour
         {
             RemoveItem(itemToUse2);
         }
+        for (int i = 0; i < obj3; i++)
+        {
+            RemoveItem(itemToUse3);
+        }
+
         AddItem(PotionToCraft);
        
     }
     #endregion
     public void CallCraftSystem()
     {
-        Crafting(CraftingItem1, CraftingItem2, Potion, RequiredItemCount1, RequiredItemCount2);
+        Crafting(CraftingItem1, CraftingItem2,CraftingItem3, Potion, RequiredItemCount1, RequiredItemCount2, RequiredItemCount3);
     }
     #region MyRoutines
     IEnumerator OpenOrClose()
