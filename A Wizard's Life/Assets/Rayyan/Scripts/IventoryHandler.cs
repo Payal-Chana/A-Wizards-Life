@@ -44,7 +44,8 @@ public class IventoryHandler : MonoBehaviour
     public bool hasWater;
     public bool hasCoffeeBeans;
     public Flowchart SpeedPotion;
-    public Fungus.Flowchart IntroNarrative;
+    public Flowchart IntroNarrative;
+    public Flowchart HeatPotion;
     public GameObject TutorialInstruction;
     public int Bookcounter;
     public PlayerController playerController;
@@ -100,7 +101,7 @@ public class IventoryHandler : MonoBehaviour
             {
                 SpeedPotion.ExecuteBlock("Prompt");
             }
-            else if (Bookcounter >= 3)
+            else if (Bookcounter >= 4)
             {
                 Bookcounter = 4;
             }
@@ -179,6 +180,22 @@ public class IventoryHandler : MonoBehaviour
                     SpeedPotion.ExecuteBlock("GotIngredients");
                 }
 
+                /*HeatPotion.SetBooleanVariable("hasHeatWater", true);
+                Debug.Log("Should get water");
+                if (HeatPotion.GetBooleanVariable("hasChillies") == false && HeatPotion.GetBooleanVariable("hasHeatWater") == true)
+                {
+                    HeatPotion.ExecuteBlock("Water");
+                }
+
+                else if (HeatPotion.GetBooleanVariable("hasChillies") == true && HeatPotion.GetBooleanVariable("hasHeatWater") == false)
+                {
+                    HeatPotion.ExecuteBlock("Chillies");
+                }
+                else if (HeatPotion.GetBooleanVariable("hasChillies") == true && HeatPotion.GetBooleanVariable("hasHeatWater") == true)
+                {
+                    HeatPotion.ExecuteBlock("GotHeatIngredients");
+                }*/
+
             }
 
         }
@@ -217,6 +234,26 @@ public class IventoryHandler : MonoBehaviour
             ItemCount++;
             ChilliCount.text = " " + ItemCount;
 
+            /*if (ItemCount > 0)
+            {
+               HeatPotion.SetBooleanVariable("hasChillies", true);
+                Debug.Log("Should have chillies");
+                if (HeatPotion.GetBooleanVariable("hasChillies") == false && HeatPotion.GetBooleanVariable("hasWater") == true)
+                {
+                    HeatPotion.ExecuteBlock("Chillies");
+                }
+
+                else if (HeatPotion.GetBooleanVariable("hasChillies") == true && HeatPotion.GetBooleanVariable("hasWater") == false)
+                {
+                    HeatPotion.ExecuteBlock("Chillies");
+                }
+                else if (HeatPotion.GetBooleanVariable("hasChillies") == true && HeatPotion.GetBooleanVariable("hasWater") == true)
+                {
+                    HeatPotion.ExecuteBlock("GotHeatIngredients");
+                }
+
+            }*/
+
         }
         if (item.name == "HeatPotion")
         {
@@ -224,6 +261,7 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(HeatPotionCount.text);
             ItemCount++;
             HeatPotionCount.text = " " + ItemCount;
+            HeatPotion.ExecuteBlock("GotHeatPotion");
 
         }
         if (item.name == "LavaWeed")

@@ -10,6 +10,7 @@ public class FungusTriggerThings : MonoBehaviour
     public Flowchart HeliaFlowchart;
     public Flowchart IntroFlowchart;
     public Flowchart OutroFlowchart;
+    public Flowchart HeatPotion;
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +49,11 @@ public class FungusTriggerThings : MonoBehaviour
         if (other.gameObject.tag == "Giddeon")
         {
             OutroFlowchart.ExecuteBlock("StartGiddeonOutro");
+        }
+
+        if (other.gameObject.tag == "IceWall")
+        {
+            HeatPotion.ExecuteBlock("StartHeatPotion");
         }
 
     }
