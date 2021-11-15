@@ -46,6 +46,7 @@ public class IventoryHandler : MonoBehaviour
     public Flowchart SpeedPotion;
     public Flowchart IntroNarrative;
     public Flowchart HeatPotion;
+    public Flowchart YuriNarrative;
     public GameObject TutorialInstruction;
     public int Bookcounter;
     public PlayerController playerController;
@@ -130,6 +131,23 @@ public class IventoryHandler : MonoBehaviour
         {
             GiddeonCam.gameObject.SetActive(false);
             
+            playerController.canPlayerMove = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
+        if (YuriNarrative.GetBooleanVariable("yuriMouseLock") == true)
+        {
+            //GiddeonCam.gameObject.SetActive(true);
+
+            playerController.canPlayerMove = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else if (YuriNarrative.GetBooleanVariable("yuriMouseLock") == false && Open_CloseCraft == 0)
+        {
+            //GiddeonCam.gameObject.SetActive(false);
+
             playerController.canPlayerMove = true;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -295,8 +313,8 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(ShrinkPotionCount.text);
             ItemCount++;
             ShrinkPotionCount.text = " " + ItemCount;
-            
 
+            YuriNarrative.SetBooleanVariable("HasShrinkingPotion", true);          
         }
         if (item.name == "PineSap")
         {
