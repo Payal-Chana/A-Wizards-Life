@@ -17,26 +17,44 @@ public class IventoryHandler : MonoBehaviour
 
     [Header("InventoryCount")]
     public Text tempText;
-    public Text HeatPotionCount;
+   //Ingredients
     public Text DaisiesCount;
-    public Text WolfsBaneCount;
     public Text LavaWeedCount;
     public Text WaterCount;
     public Text CoffeeCount;
     public Text ChilliCount;
     public Text PineSapCount;
     public Text SnowFlakeCount;
+    public Text LotusCount;
+    public Text YetiHairCount;
+    public Text MossCount;
+    public Text GlowBerriesCount;
+    public Text SeedCount;
+    public Text IceFlowerCount;
+    public Text CorspeFlowerCount;
+    public Text WolfsBaneCount;
+    //POTIONS
     public Text SpeedPotionCount;
     public Text ShrinkPotionCount;
+    public Text HeatPotionCount;
+    public Text MeatPotionCount;
+    public Text DigestivePotionCount;
+    public Text ColdPotionCount;
+    public Text GrowthPotionCount;
+    public Text LinguisticsPotionCount;
 
     [Header("Crafting")]
     public GameObject Potion;
     public GameObject CraftingItem1;
     public GameObject CraftingItem2;
     public GameObject CraftingItem3;
+    public GameObject CraftingItem4;
+    public GameObject CraftingItem5;
     public int RequiredItemCount1;
     public int RequiredItemCount2;
     public int RequiredItemCount3;
+    public int RequiredItemCount4;
+    public int RequiredItemCount5;
     public bool CanCraft = false;
 
 
@@ -115,10 +133,11 @@ public class IventoryHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (Open_CloseCraft == 0) // craft is not open
-            {
+            {//Change This to Inventory
                 Application.Quit();
             }
         }
+        #region Narrative
         if (IntroNarrative.GetBooleanVariable("mouseLock") == true) 
         {
             GiddeonCam.gameObject.SetActive(true);
@@ -159,6 +178,7 @@ public class IventoryHandler : MonoBehaviour
             Debug.Log(WaterCount.text);
             
         }
+        #endregion
     }
 
     private void OnTriggerEnter(Collider other)
@@ -174,6 +194,7 @@ public class IventoryHandler : MonoBehaviour
     #region Add Item To List 
     public void AddItem(GameObject item)
     {
+        //Ingredients
         if(item.name== "Water")
         {
             int ItemCount = 0;
@@ -272,16 +293,7 @@ public class IventoryHandler : MonoBehaviour
 
             }*/
 
-        }
-        if (item.name == "HeatPotion")
-        {
-            int ItemCount = 0;
-            ItemCount = int.Parse(HeatPotionCount.text);
-            ItemCount++;
-            HeatPotionCount.text = " " + ItemCount;
-            HeatPotion.ExecuteBlock("GotHeatPotion");
-
-        }
+        }     
         if (item.name == "LavaWeed")
         {
             int ItemCount = 0;
@@ -297,25 +309,7 @@ public class IventoryHandler : MonoBehaviour
             ItemCount++;
             DaisiesCount.text = " " + ItemCount;
 
-        }
-        if (item.name == "SpeedPotion")
-        {
-            int ItemCount = 0;
-            ItemCount = int.Parse(SpeedPotionCount.text);
-            ItemCount++;
-            SpeedPotionCount.text = " " + ItemCount;
-            SpeedPotion.ExecuteBlock("GotSpeedPotion");
-            
-        }
-        if (item.name == "ShrinkPotion")
-        {
-            int ItemCount = 0;
-            ItemCount = int.Parse(ShrinkPotionCount.text);
-            ItemCount++;
-            ShrinkPotionCount.text = " " + ItemCount;
-
-            YuriNarrative.SetBooleanVariable("HasShrinkingPotion", true);          
-        }
+        }      
         if (item.name == "PineSap")
         {
             int ItemCount = 0;
@@ -333,11 +327,125 @@ public class IventoryHandler : MonoBehaviour
             SnowFlakeCount.text = " " + ItemCount;
             
         }
+        if (item.name == "Lotus")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(LotusCount.text);
+            ItemCount++;
+            LotusCount.text = " " + ItemCount;
+        }
+        if (item.name == "IceFlower")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(IceFlowerCount.text);
+            ItemCount++;
+            IceFlowerCount.text = " " + ItemCount;
+        }
+        if (item.name == "YetiHair")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(YetiHairCount.text);
+            ItemCount++;
+            YetiHairCount.text = " " + ItemCount;
+        }
+        if (item.name == "Seed")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(SeedCount.text);
+            ItemCount++;
+            SeedCount.text = " " + ItemCount;
+        }
+        if (item.name == "Moss")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(MossCount.text);
+            ItemCount++;
+            MossCount.text = " " + ItemCount;
+        }
+        if (item.name == "GlowBerries")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(GlowBerriesCount.text);
+            ItemCount++;
+            GlowBerriesCount.text = " " + ItemCount;
+        }
+        if (item.name == "CorspeFlower")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(CorspeFlowerCount.text);
+            ItemCount++;
+            CorspeFlowerCount.text = " " + ItemCount;
+
+        }
+
+        //Potions
+        if (item.name == "HeatPotion")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(HeatPotionCount.text);
+            ItemCount++;
+            HeatPotionCount.text = " " + ItemCount;
+            HeatPotion.ExecuteBlock("GotHeatPotion");
+
+        }
+        if (item.name == "SpeedPotion")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(SpeedPotionCount.text);
+            ItemCount++;
+            SpeedPotionCount.text = " " + ItemCount;
+            SpeedPotion.ExecuteBlock("GotSpeedPotion");
+
+        }
+        if (item.name == "ShrinkPotion")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(ShrinkPotionCount.text);
+            ItemCount++;
+            ShrinkPotionCount.text = " " + ItemCount;
+
+            YuriNarrative.SetBooleanVariable("HasShrinkingPotion", true);
+        }
+        if (item.name == "MeatPotion")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(MeatPotionCount.text);
+            ItemCount++;
+            MeatPotionCount.text = " " + ItemCount;
+        }
+        if (item.name == "DigestivePotion")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(DigestivePotionCount.text);
+            ItemCount++;
+            DigestivePotionCount.text = " " + ItemCount;
+        }
+        if (item.name == "ColdPotion")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(ColdPotionCount.text);
+            ItemCount++;
+            ColdPotionCount.text = " " + ItemCount;
+        }
+        if (item.name == "GrowthPotion")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(GrowthPotionCount.text);
+            ItemCount++;
+            GrowthPotionCount.text = " " + ItemCount;
+        }
+        if (item.name == "LinguisticsPotion")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(LinguisticsPotionCount.text);
+            ItemCount++;
+            LinguisticsPotionCount.text = " " + ItemCount;
+        }
     }
     #endregion
     #region Remove Item from List
     void RemoveItem(GameObject item)
-    {
+    {//Ingredients
         if (item.name == "Water")
         {
             int ItemCount = 0;
@@ -362,14 +470,6 @@ public class IventoryHandler : MonoBehaviour
             ChilliCount.text = " " + ItemCount;
 
         }
-        if (item.name == "HeatPotion")
-        {
-            int ItemCount = 0;
-            ItemCount = int.Parse(HeatPotionCount.text);
-            ItemCount--;
-            HeatPotionCount.text = " " + ItemCount;
-
-        }
         if (item.name == "LavaWeed")
         {
             int ItemCount = 0;
@@ -403,6 +503,66 @@ public class IventoryHandler : MonoBehaviour
             SnowFlakeCount.text = " " + ItemCount;
 
         }
+        if (item.name == "Lotus")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(LotusCount.text);
+            ItemCount--;
+            LotusCount.text = " " + ItemCount;
+        }
+        if (item.name == "IceFlower")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(IceFlowerCount.text);
+            ItemCount--;
+            IceFlowerCount.text = " " + ItemCount;
+        }
+        if (item.name == "YetiHair")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(YetiHairCount.text);
+            ItemCount--;
+            YetiHairCount.text = " " + ItemCount;
+        }
+        if (item.name == "Seed")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(SeedCount.text);
+            ItemCount--;
+            SeedCount.text = " " + ItemCount;
+        }
+        if (item.name == "Moss")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(MossCount.text);
+            ItemCount--;
+            MossCount.text = " " + ItemCount;
+        }
+        if (item.name == "GlowBerries")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(GlowBerriesCount.text);
+            ItemCount--;
+            GlowBerriesCount.text = " " + ItemCount;
+        }
+        if (item.name == "CorspeFlower")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(CorspeFlowerCount.text);
+            ItemCount--;
+            CorspeFlowerCount.text = " " + ItemCount;
+
+        }
+
+        //Potions
+        if (item.name == "HeatPotion")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(HeatPotionCount.text);
+            ItemCount--;
+            HeatPotionCount.text = " " + ItemCount;
+
+        }
         if (item.name == "SpeedPotion")
         {
             int ItemCount = 0;
@@ -419,19 +579,57 @@ public class IventoryHandler : MonoBehaviour
             ShrinkPotionCount.text = " " + ItemCount;
 
         }
+        if (item.name == "MeatPotion")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(MeatPotionCount.text);
+            ItemCount--;
+            MeatPotionCount.text = " " + ItemCount;
+        }
+        if (item.name == "DigestivePotion")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(DigestivePotionCount.text);
+            ItemCount--;
+            DigestivePotionCount.text = " " + ItemCount;
+        }
+        if (item.name == "ColdPotion")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(ColdPotionCount.text);
+            ItemCount--;
+            ColdPotionCount.text = " " + ItemCount;
+        }
+        if (item.name == "GrowthPotion")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(GrowthPotionCount.text);
+            ItemCount--;
+            GrowthPotionCount.text = " " + ItemCount;
+        }
+        if (item.name == "LinguisticsPotion")
+        {
+            int ItemCount = 0;
+            ItemCount = int.Parse(LinguisticsPotionCount.text);
+            ItemCount--;
+            LinguisticsPotionCount.text = " " + ItemCount;
+        }
     }
     #endregion
     #region Crafting System
-    public void Crafting(GameObject item1, GameObject item2, GameObject item3, GameObject Potion, int RequiredCount1, int RequiredCount2, int RequiredCount3)
+    public void Crafting(GameObject item1, GameObject item2, GameObject item3, GameObject item4, GameObject item5, GameObject Potion, int RequiredCount1, int RequiredCount2, int RequiredCount3, int RequiredCount4, int RequiredCount5)
     {
         int Count1 = 0;
         int Count2 = 0;
         int Count3 = 0;
+        int Count4 = 0;
+        int Count5 = 0;
+
         //Text name1;
-       // tempText.text = item1.name + "Count";
+        // tempText.text = item1.name + "Count";
         //Count1 = int.Parse(tempText.text);
-       // tempText.text = item2.name + "Count";
-       // Count2 = int.Parse(tempText.text);
+        // tempText.text = item2.name + "Count";
+        // Count2 = int.Parse(tempText.text);
 
         #region item1
         if (item1.name == "Daisies")
@@ -535,11 +733,136 @@ public class IventoryHandler : MonoBehaviour
             Count3 = int.Parse(SnowFlakeCount.text);
         }
         #endregion     
+        #region item4
+        if (item4.name == "Daisies")
+        {
+            Count4 = int.Parse(DaisiesCount.text);
+        }
+        else if (item4.name == "PineSap")
+        {
+            Count4 = int.Parse(PineSapCount.text);
+        }
+        else if (item4.name == "WolfsBane")
+        {
+            Count4 = int.Parse(WolfsBaneCount.text);
+        }
+        else if (item4.name == "LavaWeed")
+        {
+            Count4 = int.Parse(LavaWeedCount.text);
+        }
+        else if (item4.name == "CoffeeBean")
+        {
+            Count4 = int.Parse(CoffeeCount.text);
+        }
+        else if (item4.name == "Water")
+        {
+            Count4 = int.Parse(WaterCount.text);
+        }
+        else if (item4.name == "Chilli")
+        {
+            Count4 = int.Parse(ChilliCount.text);
+        }
+        else if (item4.name == "Snowflake")
+        {
+            Count4 = int.Parse(SnowFlakeCount.text);
+        }
+        else if (item4.name == "CorspeFlower")
+        {
+            Count4 = int.Parse(CorspeFlowerCount.text);
+        }
+        else if (item4.name == "Lotus")
+        {
+            Count4 = int.Parse(LotusCount.text);
+        }
+        else if (item4.name == "IceFlower")
+        {
+            Count4 = int.Parse(IceFlowerCount.text);
+        }
+        else if (item4.name == "YetiHair")
+        {
+            Count4 = int.Parse(YetiHairCount.text);
+        }
+        else if (item4.name == "Seed")
+        {
+            Count4 = int.Parse(SeedCount.text);
+        }
+        else if (item4.name == "Moss")
+        {
+            Count4 = int.Parse(SnowFlakeCount.text);
+        }
+        else if (item4.name == "GlowBerries")
+        {
+            Count4 = int.Parse(GlowBerriesCount.text);
+        }
+        #endregion
+        #region item5
+        if (item5.name == "Daisies")
+        {
+            Count5 = int.Parse(DaisiesCount.text);
+        }
+        else if (item5.name == "PineSap")
+        {
+            Count5 = int.Parse(PineSapCount.text);
+        }
+        else if (item5.name == "WolfsBane")
+        {
+            Count5 = int.Parse(WolfsBaneCount.text);
+        }
+        else if (item5.name == "LavaWeed")
+        {
+            Count5 = int.Parse(LavaWeedCount.text);
+        }
+        else if (item5.name == "CoffeeBean")
+        {
+            Count5 = int.Parse(CoffeeCount.text);
+        }
+        else if (item5.name == "Water")
+        {
+            Count5 = int.Parse(WaterCount.text);
+        }
+        else if (item5.name == "Chilli")
+        {
+            Count5 = int.Parse(ChilliCount.text);
+        }
+        else if (item5.name == "Snowflake")
+        {
+            Count5 = int.Parse(SnowFlakeCount.text);
+        }
+        else if (item5.name == "CorspeFlower")
+        {
+            Count5 = int.Parse(CorspeFlowerCount.text);
+        }
+        else if (item5.name == "Lotus")
+        {
+            Count5 = int.Parse(LotusCount.text);
+        }
+        else if (item5.name == "IceFlower")
+        {
+            Count5 = int.Parse(IceFlowerCount.text);
+        }
+        else if (item5.name == "YetiHair")
+        {
+            Count5 = int.Parse(YetiHairCount.text);
+        }
+        else if (item5.name == "Seed")
+        {
+            Count5 = int.Parse(SeedCount.text);
+        }
+        else if (item5.name == "Moss")
+        {
+            Count5 = int.Parse(SnowFlakeCount.text);
+        }
+        else if (item5.name == "GlowBerries")
+        {
+            Count5 = int.Parse(GlowBerriesCount.text);
+        }
+        #endregion
 
-        CheckItemCount(RequiredCount1, RequiredCount2, RequiredCount3,Count1, Count2, Count3);
+
+        CheckItemCount(RequiredCount1, RequiredCount2, RequiredCount3, RequiredCount4, RequiredCount5, Count1, Count2, Count3, Count4, Count5);
         if (CanCraft == true)
         {
-            CraftPotion(item1, item2,item3, Potion, RequiredCount1, RequiredCount2, RequiredCount3);
+            CraftPotion(item1, item2, item3, item4, item5, Potion, RequiredCount1, RequiredCount2, RequiredCount3, RequiredCount4, RequiredCount5);
         }
         else if (CanCraft == false)
         {
@@ -549,9 +872,9 @@ public class IventoryHandler : MonoBehaviour
 
     }
     //function Checks if we have enough ingredients to craft 
-    void CheckItemCount(int requiredCount1, int requiredCount2,int requiredCount3, int ItemCount1, int ItemCount2, int ItemCount3)
+    void CheckItemCount(int requiredCount1, int requiredCount2, int requiredCount3, int requiredCount4, int requiredCount5, int ItemCount1, int ItemCount2, int ItemCount3, int ItemCount4, int ItemCount5)
     {
-        if (ItemCount1 >= requiredCount1 && ItemCount2 >= requiredCount2 && ItemCount3 >= requiredCount3)
+        if (ItemCount1 >= requiredCount1 && ItemCount2 >= requiredCount2 && ItemCount3 >= requiredCount3 && ItemCount4 >= requiredCount4 && ItemCount5 >= requiredCount5)
         {
             CanCraft = true;
         }
@@ -561,7 +884,7 @@ public class IventoryHandler : MonoBehaviour
         }
     }
     //removes the amount of ingredients to craft and adds the potion we need;
-     void CraftPotion(GameObject itemToUse1, GameObject itemToUse2,GameObject itemToUse3, GameObject PotionToCraft, int obj1, int obj2, int obj3)
+     void CraftPotion(GameObject itemToUse1, GameObject itemToUse2, GameObject itemToUse3, GameObject itemToUse4, GameObject itemToUse5, GameObject PotionToCraft, int obj1, int obj2, int obj3, int obj4, int obj5)
     {
         for (int i = 0; i < obj1; i++)
         {
@@ -575,6 +898,14 @@ public class IventoryHandler : MonoBehaviour
         {
             RemoveItem(itemToUse3);
         }
+        for (int i = 0; i < obj4; i++)
+        {
+            RemoveItem(itemToUse4);
+        }
+        for (int i = 0; i < obj5; i++)
+        {
+            RemoveItem(itemToUse5);
+        }
 
         AddItem(PotionToCraft);
        
@@ -582,7 +913,7 @@ public class IventoryHandler : MonoBehaviour
     #endregion
     public void CallCraftSystem()
     {
-        Crafting(CraftingItem1, CraftingItem2,CraftingItem3, Potion, RequiredItemCount1, RequiredItemCount2, RequiredItemCount3);
+        Crafting(CraftingItem1, CraftingItem2, CraftingItem3, CraftingItem4, CraftingItem5, Potion, RequiredItemCount1, RequiredItemCount2, RequiredItemCount3, RequiredItemCount4, RequiredItemCount5);
     }
     #region MyRoutines
     IEnumerator OpenOrClose()
