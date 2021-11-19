@@ -14,6 +14,21 @@ public class IventoryHandler : MonoBehaviour
     //public GameObject PickUpText;
     [SerializeField] GameObject HandBookUI_Handler;
     [SerializeField] GameObject CraftingUI;
+    public GameObject DaisiesP;
+    public GameObject LavaWeedP;
+    public GameObject WaterP;
+    public GameObject CoffeeP;
+    public GameObject ChilliP;
+    public GameObject PineSapP;
+    public GameObject SnowFlakeP;
+    public GameObject LotusP;
+    public GameObject YetiHairP;
+    public GameObject MossP;
+    public GameObject GlowBerriesP;
+    public GameObject SeedP;
+    public GameObject IceFlowerP;
+    public GameObject CorspeFlowerP;
+   
 
     [Header("InventoryCount")]
     public Text tempText;
@@ -72,7 +87,8 @@ public class IventoryHandler : MonoBehaviour
     [Header("Camera")]
     public CinemachineVirtualCamera Main;
     public CinemachineFreeLook MainCam;
-    public Camera GiddeonCam;
+    //public Camera GiddeonCam;
+    public CinemachineVirtualCamera GiddeonCam;
   
 
     private void Update()
@@ -201,6 +217,7 @@ public class IventoryHandler : MonoBehaviour
             ItemCount= int.Parse(WaterCount.text);
             ItemCount= ItemCount + 10;
             WaterCount.text = " " + ItemCount;
+            StartCoroutine(DisplayItemPickedUp(WaterP));
             if (ItemCount > 0)
             {
                 SpeedPotion.SetBooleanVariable("hasWater", true);
@@ -244,6 +261,7 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(CoffeeCount.text);
             ItemCount++;
             CoffeeCount.text = " " + ItemCount;
+            StartCoroutine(DisplayItemPickedUp(CoffeeP));
 
             if (ItemCount > 0)
             {
@@ -272,7 +290,7 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(ChilliCount.text);
             ItemCount++;
             ChilliCount.text = " " + ItemCount;
-
+            StartCoroutine(DisplayItemPickedUp(ChilliP));
             /*if (ItemCount > 0)
             {
                HeatPotion.SetBooleanVariable("hasChillies", true);
@@ -300,7 +318,7 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(LavaWeedCount.text);
             ItemCount++;
             LavaWeedCount.text = " " + ItemCount;
-
+            StartCoroutine(DisplayItemPickedUp(LavaWeedP));
         }
         if (item.name == "Daisies")
         {
@@ -308,7 +326,7 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(DaisiesCount.text);
             ItemCount++;
             DaisiesCount.text = " " + ItemCount;
-
+            StartCoroutine(DisplayItemPickedUp(DaisiesP));
         }      
         if (item.name == "PineSap")
         {
@@ -316,7 +334,7 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(PineSapCount.text);
             ItemCount++;
             PineSapCount.text = " " + ItemCount;
-            
+            StartCoroutine(DisplayItemPickedUp(PineSapP));
 
         }
         if (item.name == "Snowflake")
@@ -325,7 +343,7 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(SnowFlakeCount.text);
             ItemCount++;
             SnowFlakeCount.text = " " + ItemCount;
-            
+            StartCoroutine(DisplayItemPickedUp(SnowFlakeP));
         }
         if (item.name == "Lotus")
         {
@@ -333,6 +351,7 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(LotusCount.text);
             ItemCount++;
             LotusCount.text = " " + ItemCount;
+            StartCoroutine(DisplayItemPickedUp(LotusP));
         }
         if (item.name == "IceFlower")
         {
@@ -340,6 +359,7 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(IceFlowerCount.text);
             ItemCount++;
             IceFlowerCount.text = " " + ItemCount;
+            StartCoroutine(DisplayItemPickedUp(IceFlowerP));
         }
         if (item.name == "YetiHair")
         {
@@ -347,6 +367,7 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(YetiHairCount.text);
             ItemCount++;
             YetiHairCount.text = " " + ItemCount;
+            StartCoroutine(DisplayItemPickedUp(YetiHairP));
         }
         if (item.name == "Seed")
         {
@@ -354,6 +375,7 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(SeedCount.text);
             ItemCount++;
             SeedCount.text = " " + ItemCount;
+            StartCoroutine(DisplayItemPickedUp(SeedP));
         }
         if (item.name == "Moss")
         {
@@ -361,6 +383,7 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(MossCount.text);
             ItemCount++;
             MossCount.text = " " + ItemCount;
+            StartCoroutine(DisplayItemPickedUp(MossP));
         }
         if (item.name == "GlowBerries")
         {
@@ -368,6 +391,7 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(GlowBerriesCount.text);
             ItemCount++;
             GlowBerriesCount.text = " " + ItemCount;
+            StartCoroutine(DisplayItemPickedUp(GlowBerriesP));
         }
         if (item.name == "CorspeFlower")
         {
@@ -375,6 +399,7 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(CorspeFlowerCount.text);
             ItemCount++;
             CorspeFlowerCount.text = " " + ItemCount;
+            StartCoroutine(DisplayItemPickedUp(CorspeFlowerP));
 
         }
 
@@ -444,7 +469,7 @@ public class IventoryHandler : MonoBehaviour
     }
     #endregion
     #region Remove Item from List
-    void RemoveItem(GameObject item)
+    public void RemoveItem(GameObject item)
     {//Ingredients
         if (item.name == "Water")
         {
@@ -968,5 +993,12 @@ public class IventoryHandler : MonoBehaviour
     }
 
     #endregion
+
+    IEnumerator DisplayItemPickedUp(GameObject item)
+    {
+        item.SetActive(true);
+        yield return new WaitForSeconds(5);
+        item.SetActive(false);
+    }
 }
 

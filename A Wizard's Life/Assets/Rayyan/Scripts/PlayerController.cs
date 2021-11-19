@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float playerSpeed = 2.0f;
     [SerializeField] float jumpHeight = 1.0f;
     [SerializeField] float gravityValue = -9.81f;
+    public bool SpeedPotion_Used = false;
 
 
     //respawn
@@ -31,7 +32,10 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
+        if(SpeedPotion_Used== true)
+        {
+            StartCoroutine(SetSpeed());
+        }
 
         if (canPlayerMove == true)
         {
@@ -84,6 +88,16 @@ public class PlayerController : MonoBehaviour
             Debug.Log(targetRespawn.transform.position);
             transform.position = targetRespawn.transform.position;
         }
+    }
+    IEnumerator SetSpeed()
+    {
+        int flag = 0;
+        if (flag == 0)
+        {
+            flag = 1;
+            playerSpeed = 15;
+        }
+        yield return null;
     }
 
 }

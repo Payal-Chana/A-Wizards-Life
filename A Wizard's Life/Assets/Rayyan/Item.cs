@@ -14,7 +14,7 @@ public class Item : MonoBehaviour
     }
     public void Disable()
     {
-        inventory.PickUpText.SetActive(false);
+        //inventory.PickUpText.SetActive(false);
         gameObject.SetActive(false);
     }
 }
