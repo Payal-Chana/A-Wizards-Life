@@ -12,6 +12,7 @@ public class FungusTriggerThings : MonoBehaviour
     public Flowchart OutroFlowchart;
     public Flowchart HeatPotion;
     public Flowchart ColdPotion;
+    public Flowchart LoseBook;
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +61,23 @@ public class FungusTriggerThings : MonoBehaviour
         if (other.gameObject.tag == "HotRocks")
         {
             ColdPotion.ExecuteBlock("StartColdPotion");
+
+            /*if (OutroFlowchart.GetBooleanVariable("LostTheBook") == true)
+            {
+                OutroFlowchart.GetBooleanVariable("LoseBook");
+            }
+            else
+            {
+
+            }*/
         }
+
+        if (other.gameObject.tag == "LoseBook")
+        {
+            Debug.Log("Lost the book");
+            LoseBook.ExecuteBlock("LoseBook");
+        }
+
 
     }
 

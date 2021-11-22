@@ -16,6 +16,7 @@ TagManager:
   - IceWall
   - MeltTrigger
   - HotRocks
+  - LoseBook
   layers:
   - Default
   - TransparentFX

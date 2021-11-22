@@ -82,6 +82,7 @@ public class IventoryHandler : MonoBehaviour
     public Flowchart YuriNarrative;
     public Flowchart ColdPotion;
     public Flowchart MargothNarrative;
+    public Flowchart LoseBook;
     public GameObject TutorialInstruction;
     public int Bookcounter;
     public PlayerController playerController;
@@ -207,6 +208,23 @@ public class IventoryHandler : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+
+        if (LoseBook.GetBooleanVariable("LoseBookMouseLock") == true)
+        {
+            //GiddeonCam.gameObject.SetActive(true);
+
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else if (LoseBook.GetBooleanVariable("LoseBookMouseLock") == false && Open_CloseCraft == 0)
+        {
+            //GiddeonCam.gameObject.SetActive(false);
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
+
 
         if (Input.GetKeyDown(KeyCode.T))
         {
