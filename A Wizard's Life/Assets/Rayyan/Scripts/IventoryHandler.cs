@@ -80,6 +80,8 @@ public class IventoryHandler : MonoBehaviour
     public Flowchart IntroNarrative;
     public Flowchart HeatPotion;
     public Flowchart YuriNarrative;
+    public Flowchart ColdPotion;
+    public Flowchart MargothNarrative;
     public GameObject TutorialInstruction;
     public int Bookcounter;
     public PlayerController playerController;
@@ -159,6 +161,7 @@ public class IventoryHandler : MonoBehaviour
             GiddeonCam.gameObject.SetActive(true);
             
             playerController.canPlayerMove = false;
+            Debug.Log("The player shouldn't move!!!");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
@@ -180,6 +183,23 @@ public class IventoryHandler : MonoBehaviour
             Cursor.visible = true;
         }
         else if (YuriNarrative.GetBooleanVariable("yuriMouseLock") == false && Open_CloseCraft == 0)
+        {
+            //GiddeonCam.gameObject.SetActive(false);
+
+            playerController.canPlayerMove = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+
+        if (MargothNarrative.GetBooleanVariable("MargothMouseLock") == true)
+        {
+            //GiddeonCam.gameObject.SetActive(true);
+
+            playerController.canPlayerMove = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else if (MargothNarrative.GetBooleanVariable("MargothMouseLock") == false && Open_CloseCraft == 0)
         {
             //GiddeonCam.gameObject.SetActive(false);
 
@@ -420,6 +440,9 @@ public class IventoryHandler : MonoBehaviour
             ItemCount++;
             SpeedPotionCount.text = " " + ItemCount;
             SpeedPotion.ExecuteBlock("GotSpeedPotion");
+            playerController.canPlayerMove = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = false;
 
         }
         if (item.name == "ShrinkPotion")

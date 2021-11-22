@@ -15,6 +15,7 @@ TagManager:
   - Iceberg
   - IceWall
   - MeltTrigger
+  - HotRocks
   layers:
   - Default
   - TransparentFX
