@@ -8,7 +8,10 @@ public class UsePotions : MonoBehaviour
     public GameObject Iceberg;
     public GameObject SpeedPotionItem;
     public GameObject HeatPotionItem;
+    public GameObject ColdPotionItem;
+    public GameObject MeatPotionItem;
 
+    public GameObject ColliderTrigger;
 
     IventoryHandler inventory;
     PlayerController controller;
@@ -56,7 +59,35 @@ public class UsePotions : MonoBehaviour
             }
         }
     }
+    public void ColdPotion()
+    {
+        if (1 <= int.Parse(inventory.ColdPotionCount.text))
+        {
+            //Disable Collider and Trigger here
+            ColliderTrigger.SetActive(false);
+            inventory.RemoveItem(ColdPotionItem);
+            Debug.Log("coldUsed");
+        }
+        else
+        {
+            Debug.Log("NO ColdPotion");
+        }
 
+        
+    }
+    public void MeatPotion()
+    {
+        if (1 <= int.Parse(inventory.MeatPotionCount.text))
+        {
+            inventory.RemoveItem(MeatPotionItem);
+            Debug.Log("MeatUsed");
+        }
+        else
+        {
+            Debug.Log("NO MEatPotion");
+        }
+
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "MeltTrigger")

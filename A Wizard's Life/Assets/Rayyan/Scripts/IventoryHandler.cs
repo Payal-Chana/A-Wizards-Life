@@ -11,7 +11,7 @@ public class IventoryHandler : MonoBehaviour
     [Header("Inventory UI")]
     public float Open_Close;//close= 0 & open=1;
     public float Open_CloseCraft;
-    //public GameObject PickUpText;
+    public GameObject PickUpText;
     [SerializeField] GameObject HandBookUI_Handler;
     [SerializeField] GameObject CraftingUI;
     public GameObject DaisiesP;
@@ -162,6 +162,8 @@ public class IventoryHandler : MonoBehaviour
             GiddeonCam.gameObject.SetActive(true);
             
             playerController.canPlayerMove = false;
+            MainCam.m_YAxis.m_MaxSpeed = 0;
+            MainCam.m_XAxis.m_MaxSpeed = 0;
             Debug.Log("The player shouldn't move!!!");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -169,13 +171,15 @@ public class IventoryHandler : MonoBehaviour
         else if (IntroNarrative.GetBooleanVariable("mouseLock") == false && Open_CloseCraft == 0)
         {
             GiddeonCam.gameObject.SetActive(false);
-            
+            Debug.Log("The player  move!!!");
             playerController.canPlayerMove = true;
+            MainCam.m_YAxis.m_MaxSpeed = 1.5f;
+            MainCam.m_XAxis.m_MaxSpeed = 200;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
 
-        if (YuriNarrative.GetBooleanVariable("yuriMouseLock") == true)
+       else if (YuriNarrative.GetBooleanVariable("yuriMouseLock") == true)
         {
             //GiddeonCam.gameObject.SetActive(true);
 
@@ -192,7 +196,7 @@ public class IventoryHandler : MonoBehaviour
             Cursor.visible = false;
         }
 
-        if (MargothNarrative.GetBooleanVariable("MargothMouseLock") == true)
+        else if (MargothNarrative.GetBooleanVariable("MargothMouseLock") == true)
         {
             //GiddeonCam.gameObject.SetActive(true);
 
@@ -209,7 +213,7 @@ public class IventoryHandler : MonoBehaviour
             Cursor.visible = false;
         }
 
-        if (LoseBook.GetBooleanVariable("LoseBookMouseLock") == true)
+        else if (LoseBook.GetBooleanVariable("LoseBookMouseLock") == true)
         {
             //GiddeonCam.gameObject.SetActive(true);
 
@@ -239,9 +243,35 @@ public class IventoryHandler : MonoBehaviour
     {
         if(other.tag== "item")
         {
-            AddItem(other.gameObject);
-            Item itemHandler = other.GetComponent<Item>();
-            itemHandler.Disable();
+            
+            if (Input.GetKey(KeyCode.E))
+            {
+                AddItem(other.gameObject);
+                Item itemHandler = other.GetComponent<Item>();
+                itemHandler.Disable();
+            }
+            
+        }
+        
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "item")
+        {
+            PickUpText.SetActive(true);
+            if (Input.GetKey(KeyCode.E))
+            {
+                AddItem(other.gameObject);
+                Item itemHandler = other.GetComponent<Item>();
+                itemHandler.Disable();
+            }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "item" || other.gameObject.tag == null)
+        {
+            PickUpText.SetActive(false);
         }
     }
 
@@ -423,11 +453,11 @@ public class IventoryHandler : MonoBehaviour
             MossCount.text = " " + ItemCount;
             StartCoroutine(DisplayItemPickedUp(MossP));
         }
-        if (item.name == "GlowBerries")
+        if (item.name == "IceBerries")
         {
             int ItemCount = 0;
             ItemCount = int.Parse(GlowBerriesCount.text);
-            ItemCount++;
+            ItemCount= ItemCount+6;
             GlowBerriesCount.text = " " + ItemCount;
             StartCoroutine(DisplayItemPickedUp(GlowBerriesP));
         }
@@ -604,7 +634,7 @@ public class IventoryHandler : MonoBehaviour
             ItemCount--;
             MossCount.text = " " + ItemCount;
         }
-        if (item.name == "GlowBerries")
+        if (item.name == "IceBerries")
         {
             int ItemCount = 0;
             ItemCount = int.Parse(GlowBerriesCount.text);
@@ -730,6 +760,34 @@ public class IventoryHandler : MonoBehaviour
         {
             Count1 = int.Parse(SnowFlakeCount.text);
         }
+        else if (item1.name == "CorpseFlower")
+        {
+            Count1 = int.Parse(CorspeFlowerCount.text);
+        }
+        else if (item1.name == "Lotus")
+        {
+            Count1 = int.Parse(LotusCount.text);
+        }
+        else if (item1.name == "IceFlower")
+        {
+            Count1 = int.Parse(IceFlowerCount.text);
+        }
+        else if (item1.name == "YetiHair")
+        {
+            Count1 = int.Parse(YetiHairCount.text);
+        }
+        else if (item1.name == "Seed")
+        {
+            Count1 = int.Parse(SeedCount.text);
+        }
+        else if (item1.name == "Moss")
+        {
+            Count1 = int.Parse(MossCount.text);
+        }
+        else if (item1.name == "IceBerries")
+        {
+            Count1 = int.Parse(GlowBerriesCount.text);
+        }
         #endregion
         #region item2
         if (item2.name == "Daisies")
@@ -764,6 +822,34 @@ public class IventoryHandler : MonoBehaviour
         {
             Count2 = int.Parse(SnowFlakeCount.text);
         }
+        else if (item2.name == "CorpseFlower")
+        {
+            Count2 = int.Parse(CorspeFlowerCount.text);
+        }
+        else if (item2.name == "Lotus")
+        {
+            Count2 = int.Parse(LotusCount.text);
+        }
+        else if (item2.name == "IceFlower")
+        {
+            Count2 = int.Parse(IceFlowerCount.text);
+        }
+        else if (item2.name == "YetiHair")
+        {
+            Count2 = int.Parse(YetiHairCount.text);
+        }
+        else if (item2.name == "Seed")
+        {
+            Count2 = int.Parse(SeedCount.text);
+        }
+        else if (item2.name == "Moss")
+        {
+            Count2 = int.Parse(MossCount.text);
+        }
+        else if (item2.name == "IceBerries")
+        {
+            Count2 = int.Parse(GlowBerriesCount.text);
+        }
         #endregion  
         #region item3
         if (item3.name == "Daisies")
@@ -797,6 +883,34 @@ public class IventoryHandler : MonoBehaviour
         else if (item3.name == "Snowflake")
         {
             Count3 = int.Parse(SnowFlakeCount.text);
+        }
+        else if (item3.name == "CorpseFlower")
+        {
+            Count3 = int.Parse(CorspeFlowerCount.text);
+        }
+        else if (item3.name == "Lotus")
+        {
+            Count3 = int.Parse(LotusCount.text);
+        }
+        else if (item3.name == "IceFlower")
+        {
+            Count3 = int.Parse(IceFlowerCount.text);
+        }
+        else if (item3.name == "YetiHair")
+        {
+            Count3 = int.Parse(YetiHairCount.text);
+        }
+        else if (item3.name == "Seed")
+        {
+            Count3 = int.Parse(SeedCount.text);
+        }
+        else if (item3.name == "Moss")
+        {
+            Count3 = int.Parse(MossCount.text);
+        }
+        else if (item3.name == "IceBerries")
+        {
+            Count3 = int.Parse(GlowBerriesCount.text);
         }
         #endregion     
         #region item4
@@ -856,7 +970,7 @@ public class IventoryHandler : MonoBehaviour
         {
             Count4 = int.Parse(SnowFlakeCount.text);
         }
-        else if (item4.name == "GlowBerries")
+        else if (item4.name == "IceBerries")
         {
             Count4 = int.Parse(GlowBerriesCount.text);
         }
@@ -918,7 +1032,7 @@ public class IventoryHandler : MonoBehaviour
         {
             Count5 = int.Parse(SnowFlakeCount.text);
         }
-        else if (item5.name == "GlowBerries")
+        else if (item5.name == "IceBerries")
         {
             Count5 = int.Parse(GlowBerriesCount.text);
         }

@@ -74,7 +74,8 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            canPlayerMove = false;
+            //canPlayerMove = false;
+            Debug.Log("Cant MOve");
         }
         
     }

@@ -6,15 +6,15 @@ public class Item : MonoBehaviour
 {
     public float RespawnTime;
     public GameObject Player;
-    InventorySystem inventory;
+    IventoryHandler inventory;
 
     private void Awake()
     {
-        inventory = Player.GetComponent<InventorySystem>();
+        inventory = Player.GetComponent<IventoryHandler>();
     }
     public void Disable()
     {
-        //inventory.PickUpText.SetActive(false);
+        inventory.PickUpText.SetActive(false);
         gameObject.SetActive(false);
     }
 }
