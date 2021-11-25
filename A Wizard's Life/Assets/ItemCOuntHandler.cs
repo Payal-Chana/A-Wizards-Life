@@ -72,12 +72,57 @@ public class ItemCOuntHandler : MonoBehaviour
     {
         WaterAmount.text = Handler.WaterCount.text;
         CoffeAmount.text = Handler.CoffeeCount.text;
+        #region Setting Colours
+        if (WaterAmount.text == "0")
+        {
+            WaterAmount.color = Color.red;
+        }
+        else
+        {
+            WaterAmount.color = Color.green;
+        }
+        if (CoffeAmount.text == "0")
+        {
+            CoffeAmount.color = Color.red;
+        }
+        else
+        {
+            CoffeAmount.color = Color.green;
+        }
+#endregion
     }
     void SetShrinkPotionList()
     {
         SnowFlakeAmount.text = Handler.SnowFlakeCount.text;
         DaisyAmount.text = Handler.DaisiesCount.text;
         PineSapAmount.text = Handler.PineSapCount.text;
+        #region Setting Colours
+
+        if (SnowFlakeAmount.text == "0")
+        {
+            SnowFlakeAmount.color = Color.red;
+        }
+        else
+        {
+            SnowFlakeAmount.color = Color.green;
+        }
+        if (DaisyAmount.text == "0")
+        {
+            DaisyAmount.color = Color.red;
+        }
+        else
+        {
+            DaisyAmount.color = Color.green;
+        }
+        if (PineSapAmount.text == "0")
+        {
+            PineSapAmount.color = Color.red;
+        }
+        else
+        {
+            PineSapAmount.color = Color.green;
+        }
+        #endregion
     }
 
     void SetHeatPotionList()
