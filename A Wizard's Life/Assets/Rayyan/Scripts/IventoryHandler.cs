@@ -57,6 +57,11 @@ public class IventoryHandler : MonoBehaviour
     public Text ColdPotionCount;
     public Text GrowthPotionCount;
     public Text LinguisticsPotionCount;
+    //Partciles
+    public ParticleSystem Snow1;
+    public ParticleSystem Snow2;
+    public CinemachineVirtualCamera SnowChange;
+    public float SystemTime, SystemSpeed;
 
     [Header("Crafting")]
     public GameObject Potion;
@@ -71,6 +76,7 @@ public class IventoryHandler : MonoBehaviour
     public int RequiredItemCount4;
     public int RequiredItemCount5;
     public bool CanCraft = false;
+    public bool CanCraftPhase2 = false;
 
 
     //Narrative things
@@ -92,8 +98,19 @@ public class IventoryHandler : MonoBehaviour
     public CinemachineFreeLook MainCam;
     //public Camera GiddeonCam;
     public CinemachineVirtualCamera GiddeonCam;
-  
+    public CinemachineVirtualCamera YuriCam;
+    public CinemachineVirtualCamera MargotCam;
 
+    [Header("Crafting Bar")]
+    [SerializeField] GameObject CraftBar;
+    [SerializeField] float CraftTime, CraftSpeed;
+    [SerializeField] CraftBar craftBar_;
+
+    private void Start()
+    {
+        Snow1.Play();
+        Snow2.Pause();
+    }
     private void Update()
     {
         #region Display Inventory
@@ -182,7 +199,9 @@ public class IventoryHandler : MonoBehaviour
        else if (YuriNarrative.GetBooleanVariable("yuriMouseLock") == true)
         {
             //GiddeonCam.gameObject.SetActive(true);
-
+            YuriCam.gameObject.SetActive(true);
+            MainCam.m_YAxis.m_MaxSpeed = 0;
+            MainCam.m_XAxis.m_MaxSpeed = 0;
             playerController.canPlayerMove = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -190,7 +209,9 @@ public class IventoryHandler : MonoBehaviour
         else if (YuriNarrative.GetBooleanVariable("yuriMouseLock") == false && Open_CloseCraft == 0)
         {
             //GiddeonCam.gameObject.SetActive(false);
-
+            YuriCam.gameObject.SetActive(false);
+            MainCam.m_YAxis.m_MaxSpeed = 1.5f;
+            MainCam.m_XAxis.m_MaxSpeed = 200;
             playerController.canPlayerMove = true;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -199,7 +220,9 @@ public class IventoryHandler : MonoBehaviour
         else if (MargothNarrative.GetBooleanVariable("MargothMouseLock") == true)
         {
             //GiddeonCam.gameObject.SetActive(true);
-
+            MargotCam.gameObject.SetActive(true);
+            MainCam.m_YAxis.m_MaxSpeed = 0;
+            MainCam.m_XAxis.m_MaxSpeed = 0;
             playerController.canPlayerMove = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -207,7 +230,9 @@ public class IventoryHandler : MonoBehaviour
         else if (MargothNarrative.GetBooleanVariable("MargothMouseLock") == false && Open_CloseCraft == 0)
         {
             //GiddeonCam.gameObject.SetActive(false);
-
+            MargotCam.gameObject.SetActive(false);
+            MainCam.m_YAxis.m_MaxSpeed = 1.5f;
+            MainCam.m_XAxis.m_MaxSpeed = 200;
             playerController.canPlayerMove = true;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -233,7 +258,8 @@ public class IventoryHandler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.T))
         {
             Debug.Log("Test Success!");
-            Debug.Log(WaterCount.text);
+            StartCoroutine(SnowSystem());
+            //Debug.Log(WaterCount.text);
             
         }
         #endregion
@@ -407,6 +433,7 @@ public class IventoryHandler : MonoBehaviour
         }
         if (item.name == "Snowflake")
         {
+            StartCoroutine(SnowSystem());
             int ItemCount = 0;
             ItemCount = int.Parse(SnowFlakeCount.text);
             ItemCount++;
@@ -457,7 +484,7 @@ public class IventoryHandler : MonoBehaviour
         {
             int ItemCount = 0;
             ItemCount = int.Parse(GlowBerriesCount.text);
-            ItemCount= ItemCount+6;
+            ItemCount= ItemCount+3;
             GlowBerriesCount.text = " " + ItemCount;
             StartCoroutine(DisplayItemPickedUp(GlowBerriesP));
         }
@@ -1042,7 +1069,13 @@ public class IventoryHandler : MonoBehaviour
         CheckItemCount(RequiredCount1, RequiredCount2, RequiredCount3, RequiredCount4, RequiredCount5, Count1, Count2, Count3, Count4, Count5);
         if (CanCraft == true)
         {
-            CraftPotion(item1, item2, item3, item4, item5, Potion, RequiredCount1, RequiredCount2, RequiredCount3, RequiredCount4, RequiredCount5);
+            StartCoroutine(CraftingBar());
+            if (CanCraftPhase2 == true)
+            {
+                CraftPotion(item1, item2, item3, item4, item5, Potion, RequiredCount1, RequiredCount2, RequiredCount3, RequiredCount4, RequiredCount5);
+            }
+            //
+            
         }
         else if (CanCraft == false)
         {
@@ -1154,6 +1187,66 @@ public class IventoryHandler : MonoBehaviour
         item.SetActive(true);
         yield return new WaitForSeconds(5);
         item.SetActive(false);
+    }
+
+    IEnumerator CraftingBar()
+    {
+        craftBar_.Cur = 0;
+        float i = 0;
+        float rate = (1.0f / CraftTime) * CraftSpeed;
+        while (i < craftBar_.Max)
+        {
+            CanCraftPhase2 = false;
+            i = i + Time.deltaTime * rate;
+            craftBar_.Cur = i;
+            
+        }
+        CanCraftPhase2 = true;
+        yield return null;
+
+    }
+    IEnumerator SnowSystem()
+    {
+        SnowChange.gameObject.SetActive(true);
+        float i = 0;
+        float rate = (1.0f / SystemTime) * SystemSpeed;
+        while (i < 100)
+        {
+            
+            i = i + Time.deltaTime * rate;
+            var no = Snow1.noise;
+            var em = Snow1.emission;
+            var lv = Snow1.limitVelocityOverLifetime;
+            var vel = Snow1.velocityOverLifetime;
+            yield return new WaitForSeconds(2);
+            no.strength = 5f;
+            yield return new WaitForSeconds(5);
+            //em.SetBurst(0,new ParticleSystem.Burst(2.0f, 100));
+            yield return new WaitForSeconds(5);
+            lv.dampen = 0.5f;
+            AnimationCurve curve = new AnimationCurve();
+            curve.AddKey(0.0f, 1.0f);
+            curve.AddKey(1.0f, 0.0f);
+            lv.limit = new ParticleSystem.MinMaxCurve(0, curve);
+
+            AnimationCurve curve1 = new AnimationCurve();
+            curve.AddKey(0.0f, 1.0f);
+            curve.AddKey(1.0f, 0.0f);
+            vel.x = new ParticleSystem.MinMaxCurve(10.0f, curve1);
+            vel.y = new ParticleSystem.MinMaxCurve(10.0f, curve1);
+            vel.z = new ParticleSystem.MinMaxCurve(10.0f, curve1);
+
+            yield return new WaitForSeconds(5);
+            Snow2.Play();
+            Snow1.Stop();
+            yield return new WaitForSeconds(5);
+            SnowChange.gameObject.SetActive(false);
+            Debug.Log("end of Sytem");
+        }
+        
+        
+        //yield return null;
+
     }
 }
 
