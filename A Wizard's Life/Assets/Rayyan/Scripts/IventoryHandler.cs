@@ -1208,6 +1208,9 @@ public class IventoryHandler : MonoBehaviour
     IEnumerator SnowSystem()
     {
         SnowChange.gameObject.SetActive(true);
+        playerController.canPlayerMove = false;
+        MainCam.m_YAxis.m_MaxSpeed = 0;
+        MainCam.m_XAxis.m_MaxSpeed = 0;
         float i = 0;
         float rate = (1.0f / SystemTime) * SystemSpeed;
         while (i < 100)
@@ -1241,6 +1244,10 @@ public class IventoryHandler : MonoBehaviour
             Snow1.Stop();
             yield return new WaitForSeconds(5);
             SnowChange.gameObject.SetActive(false);
+            yield return new WaitForSeconds(5);
+            MainCam.m_YAxis.m_MaxSpeed = 1.5f;
+            MainCam.m_XAxis.m_MaxSpeed = 200;
+            playerController.canPlayerMove = true;
             Debug.Log("end of Sytem");
         }
         
