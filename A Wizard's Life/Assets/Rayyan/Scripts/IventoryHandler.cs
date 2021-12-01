@@ -116,29 +116,38 @@ public class IventoryHandler : MonoBehaviour
         #region Display Inventory
         if (Input.GetKeyDown(KeyCode.I) && Open_Close == 0)
         {
-            playerController.canPlayerMove = false;
-            MainCam.m_YAxis.m_MaxSpeed = 0;
-            MainCam.m_XAxis.m_MaxSpeed = 0;
-            HandBookUI_Handler.SetActive(true);
-            StartCoroutine(OpenOrClose());
-            string result = "My Iventory: ";
+           if(SpeedPotion.GetBooleanVariable("InventoryBool")== true)
+            {
+                playerController.canPlayerMove = false;
+                MainCam.m_YAxis.m_MaxSpeed = 0;
+                MainCam.m_XAxis.m_MaxSpeed = 0;
+                HandBookUI_Handler.SetActive(true);
+                StartCoroutine(OpenOrClose());
+                string result = "My Iventory: ";
+            }
+            
         }
         else if (Input.GetKeyDown(KeyCode.I) && Open_Close == 1)
         {
-            StartCoroutine(OpenOrClose());
-            playerController.canPlayerMove = true;
-            MainCam.m_YAxis.m_MaxSpeed = 1.5f;
-            MainCam.m_XAxis.m_MaxSpeed = 200;
-            HandBookUI_Handler.SetActive(false);
-            Bookcounter += 1;
-            TutorialInstruction.SetActive(false);
-            Debug.Log("It should go away!");
+            if(SpeedPotion.GetBooleanVariable("InventoryBool")== false)
+            {
+                StartCoroutine(OpenOrClose());
+                playerController.canPlayerMove = true;
+                MainCam.m_YAxis.m_MaxSpeed = 1.5f;
+                MainCam.m_XAxis.m_MaxSpeed = 200;
+                HandBookUI_Handler.SetActive(false);
+                Bookcounter += 1;
+                TutorialInstruction.SetActive(false);
+                Debug.Log("It should go away!");
+            }
+            
         }
 
         #endregion
         #region Display Crafting
         if (Input.GetKeyDown(KeyCode.I) && Open_CloseCraft == 0)
         {
+            SpeedPotion.SetBooleanVariable("InventoryBool", true);
             CraftingUI.SetActive(true);
             StartCoroutine(OpenOrCloseCrafting());
             string result = "My Iventory: ";
@@ -146,6 +155,7 @@ public class IventoryHandler : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.I) && Open_CloseCraft == 1)
         {
+            SpeedPotion.SetBooleanVariable("InventoryBool", false);
             StartCoroutine(OpenOrCloseCrafting());
             CraftingUI.SetActive(false);
             Bookcounter += 1;
@@ -196,9 +206,10 @@ public class IventoryHandler : MonoBehaviour
             Cursor.visible = false;
         }
 
-       else if (YuriNarrative.GetBooleanVariable("yuriMouseLock") == true)
+        if (YuriNarrative.GetBooleanVariable("yuriMouseLock") == true)
         {
             //GiddeonCam.gameObject.SetActive(true);
+            Debug.Log("Im Talking to Yuri");
             YuriCam.gameObject.SetActive(true);
             MainCam.m_YAxis.m_MaxSpeed = 0;
             MainCam.m_XAxis.m_MaxSpeed = 0;
@@ -217,7 +228,7 @@ public class IventoryHandler : MonoBehaviour
             Cursor.visible = false;
         }
 
-        else if (MargothNarrative.GetBooleanVariable("MargothMouseLock") == true)
+         if (MargothNarrative.GetBooleanVariable("MargothMouseLock") == true)
         {
             //GiddeonCam.gameObject.SetActive(true);
             MargotCam.gameObject.SetActive(true);
@@ -1223,9 +1234,9 @@ public class IventoryHandler : MonoBehaviour
             var vel = Snow1.velocityOverLifetime;
             yield return new WaitForSeconds(2);
             no.strength = 5f;
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(2);
             //em.SetBurst(0,new ParticleSystem.Burst(2.0f, 100));
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(2);
             lv.dampen = 0.5f;
             AnimationCurve curve = new AnimationCurve();
             curve.AddKey(0.0f, 1.0f);
@@ -1239,12 +1250,13 @@ public class IventoryHandler : MonoBehaviour
             vel.y = new ParticleSystem.MinMaxCurve(10.0f, curve1);
             vel.z = new ParticleSystem.MinMaxCurve(10.0f, curve1);
 
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(2);
             Snow2.Play();
             Snow1.Stop();
             yield return new WaitForSeconds(5);
             SnowChange.gameObject.SetActive(false);
-            yield return new WaitForSeconds(5);
+            //Snow1.Stop();
+            yield return new WaitForSeconds(3);
             MainCam.m_YAxis.m_MaxSpeed = 1.5f;
             MainCam.m_XAxis.m_MaxSpeed = 200;
             playerController.canPlayerMove = true;

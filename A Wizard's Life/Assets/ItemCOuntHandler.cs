@@ -129,6 +129,25 @@ public class ItemCOuntHandler : MonoBehaviour
     {
         Chillies.text = Handler.ChilliCount.text;
         Water2.text = Handler.WaterCount.text;
+
+        #region Setting Colours
+        if (Water2.text == "0")
+        {
+            Water2.color = Color.red;
+        }
+        else
+        {
+            Water2.color = Color.green;
+        }
+        if (Chillies.text == "0" || Chillies.text == "1")
+        {
+            Chillies.color = Color.red;
+        }
+        else
+        {
+            Chillies.color = Color.green;
+        }
+        #endregion
     }
 
     void SetMeatPotionList()
@@ -138,8 +157,50 @@ public class ItemCOuntHandler : MonoBehaviour
         ChilliesAmount.text = Handler.ChilliCount.text;
         Water3.text = Handler.WaterCount.text;
         LotusAmount.text = Handler.LotusCount.text;
+        #region Setting Colours
+        if (CorpseFlowerAmount.text == "0")
+        {
+            CorpseFlowerAmount.color = Color.red;
+        }
+        else
+        {
+            CorpseFlowerAmount.color = Color.green;
+        }
+        if (ChilliesAmount.text == "0" )
+        {
+            ChilliesAmount.color = Color.red;
+        }
+        else
+        {
+            ChilliesAmount.color = Color.green;
+        }
+        if (LavaWeedAmount.text == "0")
+        {
+            LavaWeedAmount.color = Color.red;
+        }
+        else
+        {
+            LavaWeedAmount.color = Color.green;
+        }
+        if (Water3.text == "0")
+        {
+            Water3.color = Color.red;
+        }
+        else
+        {
+            Water3.color = Color.green;
+        }
+        if (LotusAmount.text == "0")
+        {
+            LotusAmount.color = Color.red;
+        }
+        else
+        {
+            LotusAmount.color = Color.green;
+        }
+        #endregion
     }
-    
+
     void SetDigestivePotionList()
     {
         Chillies3.text = Handler.ChilliCount.text;
@@ -149,6 +210,25 @@ public class ItemCOuntHandler : MonoBehaviour
     {
         IceFlower.text = Handler.IceFlowerCount.text;
         Water4.text = Handler.WaterCount.text;
+
+        #region Setting Colours
+        if (IceFlower.text == "0")
+        {
+            IceFlower.color = Color.red;
+        }
+        else
+        {
+            IceFlower.color = Color.green;
+        }
+        if (Water4.text == "0")
+        {
+            Water4.color = Color.red;
+        }
+        else
+        {
+            Water4.color = Color.green;
+        }
+        #endregion
     }
     void SetGrowthPotionText()
     {
