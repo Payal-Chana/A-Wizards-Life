@@ -80,6 +80,7 @@ public class IventoryHandler : MonoBehaviour
 
 
     //Narrative things
+    [Header("Fungus")]
     public bool hasWater;
     public bool hasCoffeeBeans;
     public Flowchart SpeedPotion;
@@ -116,30 +117,26 @@ public class IventoryHandler : MonoBehaviour
         #region Display Inventory
         if (Input.GetKeyDown(KeyCode.I) && Open_Close == 0)
         {
-           if(SpeedPotion.GetBooleanVariable("InventoryBool")== true)
-            {
-                playerController.canPlayerMove = false;
-                MainCam.m_YAxis.m_MaxSpeed = 0;
-                MainCam.m_XAxis.m_MaxSpeed = 0;
-                HandBookUI_Handler.SetActive(true);
-                StartCoroutine(OpenOrClose());
-                string result = "My Iventory: ";
-            }
+            playerController.canPlayerMove = false;
+            MainCam.m_YAxis.m_MaxSpeed = 0;
+            MainCam.m_XAxis.m_MaxSpeed = 0;
+            HandBookUI_Handler.SetActive(true);
+            StartCoroutine(OpenOrClose());
+            string result = "My Iventory: ";
+            
             
         }
         else if (Input.GetKeyDown(KeyCode.I) && Open_Close == 1)
         {
-            if(SpeedPotion.GetBooleanVariable("InventoryBool")== false)
-            {
-                StartCoroutine(OpenOrClose());
-                playerController.canPlayerMove = true;
-                MainCam.m_YAxis.m_MaxSpeed = 1.5f;
-                MainCam.m_XAxis.m_MaxSpeed = 200;
-                HandBookUI_Handler.SetActive(false);
-                Bookcounter += 1;
-                TutorialInstruction.SetActive(false);
-                Debug.Log("It should go away!");
-            }
+            playerController.canPlayerMove = true;
+            MainCam.m_YAxis.m_MaxSpeed = 1.5f;
+            MainCam.m_XAxis.m_MaxSpeed = 200;
+            StartCoroutine(OpenOrClose());
+            HandBookUI_Handler.SetActive(false);
+            Bookcounter += 1;
+            TutorialInstruction.SetActive(false);
+            Debug.Log("It should go away!");
+            
             
         }
 
