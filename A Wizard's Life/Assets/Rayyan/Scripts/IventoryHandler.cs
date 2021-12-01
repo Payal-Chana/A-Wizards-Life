@@ -183,27 +183,55 @@ public class IventoryHandler : MonoBehaviour
         #region Narrative
         if (IntroNarrative.GetBooleanVariable("mouseLock") == true) 
         {
-            GiddeonCam.gameObject.SetActive(true);
+            //GiddeonCam.gameObject.SetActive(true);
             
             playerController.canPlayerMove = false;
-            MainCam.m_YAxis.m_MaxSpeed = 0;
-            MainCam.m_XAxis.m_MaxSpeed = 0;
+            //MainCam.m_YAxis.m_MaxSpeed = 0;
+            //MainCam.m_XAxis.m_MaxSpeed = 0;
             Debug.Log("The player shouldn't move!!!");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
+
+            if (YuriNarrative.GetBooleanVariable("YuriCamera") == true)
+            {
+                MargotCam.gameObject.SetActive(false);
+                YuriCam.gameObject.SetActive(false);
+                YuriCam.gameObject.SetActive(true);
+                MainCam.m_YAxis.m_MaxSpeed = 0;
+                MainCam.m_XAxis.m_MaxSpeed = 0;
+            }
+            if (MargothNarrative.GetBooleanVariable("MargothCamera") == true)
+            {
+                YuriCam.gameObject.SetActive(false);
+                GiddeonCam.gameObject.SetActive(false);
+                MargotCam.gameObject.SetActive(true);
+                MainCam.m_YAxis.m_MaxSpeed = 0;
+                MainCam.m_XAxis.m_MaxSpeed = 0;
+            }
+            if (IntroNarrative.GetBooleanVariable("GiddeonCamera") == true)
+            {
+                YuriCam.gameObject.SetActive(false);
+                MargotCam.gameObject.SetActive(false);
+                GiddeonCam.gameObject.SetActive(true);
+                MainCam.m_YAxis.m_MaxSpeed = 0;
+                MainCam.m_XAxis.m_MaxSpeed = 0;
+            }
         }
         else if (IntroNarrative.GetBooleanVariable("mouseLock") == false && Open_CloseCraft == 0)
         {
             GiddeonCam.gameObject.SetActive(false);
+            MargotCam.gameObject.SetActive(false);
+            YuriCam.gameObject.SetActive(false);
             Debug.Log("The player  move!!!");
             playerController.canPlayerMove = true;
             MainCam.m_YAxis.m_MaxSpeed = 1.5f;
             MainCam.m_XAxis.m_MaxSpeed = 200;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+
         }
 
-        if (YuriNarrative.GetBooleanVariable("yuriMouseLock") == true)
+        /*if (YuriNarrative.GetBooleanVariable("yuriMouseLock") == true)
         {
             //GiddeonCam.gameObject.SetActive(true);
             Debug.Log("Im Talking to Yuri");
@@ -259,7 +287,7 @@ public class IventoryHandler : MonoBehaviour
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-        }
+        }*/
 
 
 
