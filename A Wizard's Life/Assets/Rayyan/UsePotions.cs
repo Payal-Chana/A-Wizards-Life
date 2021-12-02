@@ -12,6 +12,7 @@ public class UsePotions : MonoBehaviour
     public GameObject MeatPotionItem;
 
     public GameObject ColliderTrigger;
+    public GameObject ColliderTrigger2;
 
     IventoryHandler inventory;
     PlayerController controller;
@@ -65,6 +66,7 @@ public class UsePotions : MonoBehaviour
         {
             //Disable Collider and Trigger here
             ColliderTrigger.SetActive(false);
+            ColliderTrigger2.SetActive(false);
             inventory.RemoveItem(ColdPotionItem);
             Debug.Log("coldUsed");
         }

@@ -823,7 +823,7 @@ public class IventoryHandler : MonoBehaviour
         {
             Count1 = int.Parse(SnowFlakeCount.text);
         }
-        else if (item1.name == "CorpseFlower")
+        else if (item1.name == "CorspeFlower")
         {
             Count1 = int.Parse(CorspeFlowerCount.text);
         }
