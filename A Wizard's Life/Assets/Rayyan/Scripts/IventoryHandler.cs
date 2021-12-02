@@ -90,6 +90,7 @@ public class IventoryHandler : MonoBehaviour
     public Flowchart ColdPotion;
     public Flowchart MargothNarrative;
     public Flowchart LoseBook;
+    public Flowchart OutroNarrative;
     public GameObject TutorialInstruction;
     public int Bookcounter;
     public PlayerController playerController;
@@ -106,6 +107,8 @@ public class IventoryHandler : MonoBehaviour
     [SerializeField] GameObject CraftBar;
     [SerializeField] float CraftTime, CraftSpeed;
     [SerializeField] CraftBar craftBar_;
+
+    public bool MenuOpen = true;
 
     private void Start()
     {
@@ -186,8 +189,8 @@ public class IventoryHandler : MonoBehaviour
             //GiddeonCam.gameObject.SetActive(true);
             
             playerController.canPlayerMove = false;
-            //MainCam.m_YAxis.m_MaxSpeed = 0;
-            //MainCam.m_XAxis.m_MaxSpeed = 0;
+            MainCam.m_YAxis.m_MaxSpeed = 0;
+            MainCam.m_XAxis.m_MaxSpeed = 0;
             Debug.Log("The player shouldn't move!!!");
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -209,6 +212,14 @@ public class IventoryHandler : MonoBehaviour
                 MainCam.m_XAxis.m_MaxSpeed = 0;
             }
             if (IntroNarrative.GetBooleanVariable("GiddeonCamera") == true)
+            {
+                YuriCam.gameObject.SetActive(false);
+                MargotCam.gameObject.SetActive(false);
+                GiddeonCam.gameObject.SetActive(true);
+                MainCam.m_YAxis.m_MaxSpeed = 0;
+                MainCam.m_XAxis.m_MaxSpeed = 0;
+            }
+            if (OutroNarrative.GetBooleanVariable("GiddeonCamera") == true)
             {
                 YuriCam.gameObject.SetActive(false);
                 MargotCam.gameObject.SetActive(false);

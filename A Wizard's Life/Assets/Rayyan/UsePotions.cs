@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fungus;
 
 public class UsePotions : MonoBehaviour
 {
@@ -20,7 +21,11 @@ public class UsePotions : MonoBehaviour
     IventoryHandler inventory;
     PlayerController controller;
     ShrinkObject melter;
-    
+
+    public Flowchart SpeedDialogue;
+    public Flowchart ColdDialogue;
+    public Flowchart HeatDialogue;
+
     bool InMeltTrigger = false;
     // Start is called before the first frame update
     void Start()
@@ -42,6 +47,7 @@ public class UsePotions : MonoBehaviour
             controller.SpeedPotion_Used = true;
             SpeedPart.Play();
             inventory.RemoveItem(SpeedPotionItem);
+            SpeedDialogue.ExecuteBlock("UsedSpeedPotion"); 
         }
         else
         {
@@ -57,8 +63,8 @@ public class UsePotions : MonoBehaviour
             {
                 HeatPart.Play();
                 melter.Melting = true;
-                
                 inventory.RemoveItem(HeatPotionItem);
+                HeatDialogue.ExecuteBlock("UsedHeatPotion");
             }
             else
             {
@@ -76,6 +82,7 @@ public class UsePotions : MonoBehaviour
             ColdPart.Play();
             inventory.RemoveItem(ColdPotionItem);
             Debug.Log("coldUsed");
+            ColdDialogue.ExecuteBlock("UsedColdPotion");
         }
         else
         {
