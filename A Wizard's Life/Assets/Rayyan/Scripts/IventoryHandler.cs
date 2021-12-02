@@ -582,6 +582,8 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(MeatPotionCount.text);
             ItemCount++;
             MeatPotionCount.text = " " + ItemCount;
+
+            MargothNarrative.SetBooleanVariable("HasMeatPotion", true);
         }
         if (item.name == "DigestivePotion")
         {

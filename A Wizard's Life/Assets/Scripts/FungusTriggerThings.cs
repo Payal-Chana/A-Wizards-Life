@@ -72,7 +72,7 @@ public class FungusTriggerThings : MonoBehaviour
             }*/
         }
 
-        if (other.gameObject.tag == "LoseBook")
+        if (other.gameObject.tag == "LoseBook" && LoseBook.GetBooleanVariable("LostTheBook") == true)
         {
             Debug.Log("Lost the book");
             LoseBook.ExecuteBlock("LoseBook");
