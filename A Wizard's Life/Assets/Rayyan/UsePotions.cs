@@ -14,6 +14,9 @@ public class UsePotions : MonoBehaviour
     public GameObject ColliderTrigger;
     public GameObject ColliderTrigger2;
 
+    public ParticleSystem SpeedPart;
+    public ParticleSystem ColdPart;
+    public ParticleSystem HeatPart;
     IventoryHandler inventory;
     PlayerController controller;
     ShrinkObject melter;
@@ -37,6 +40,7 @@ public class UsePotions : MonoBehaviour
         if (1 <= int.Parse(inventory.SpeedPotionCount.text))
         {
             controller.SpeedPotion_Used = true;
+            SpeedPart.Play();
             inventory.RemoveItem(SpeedPotionItem);
         }
         else
@@ -51,7 +55,9 @@ public class UsePotions : MonoBehaviour
         {
             if (1 <= int.Parse(inventory.HeatPotionCount.text))
             {
+                HeatPart.Play();
                 melter.Melting = true;
+                
                 inventory.RemoveItem(HeatPotionItem);
             }
             else
@@ -67,6 +73,7 @@ public class UsePotions : MonoBehaviour
             //Disable Collider and Trigger here
             ColliderTrigger.SetActive(false);
             ColliderTrigger2.SetActive(false);
+            ColdPart.Play();
             inventory.RemoveItem(ColdPotionItem);
             Debug.Log("coldUsed");
         }
