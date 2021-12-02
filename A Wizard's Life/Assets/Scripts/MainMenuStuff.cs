@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class MainMenuStuff : MonoBehaviour
 {
     public IventoryHandler IventoryScript;
-    /*public void LoadScene(string name)
+    public void LoadScene(string name)
     {
-        //SceneManager.LoadScene(name);
+        SceneManager.LoadScene(name);
 
 
-    }*/
+    }
 
     public void Play()
     {
