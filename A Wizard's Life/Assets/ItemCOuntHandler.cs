@@ -37,6 +37,7 @@ public class ItemCOuntHandler : MonoBehaviour
     [Header("ColdPotion")]
     public Text IceFlower;
     public Text Water4;
+    public Text IceBerries;
 
     [Header("GrowthPotion")]
     public Text YetiHairAmout;
@@ -210,7 +211,7 @@ public class ItemCOuntHandler : MonoBehaviour
     {
         IceFlower.text = Handler.IceFlowerCount.text;
         Water4.text = Handler.WaterCount.text;
-
+        IceBerries.text = Handler.GlowBerriesCount.text;
         #region Setting Colours
         if (IceFlower.text == "0")
         {
@@ -227,6 +228,14 @@ public class ItemCOuntHandler : MonoBehaviour
         else
         {
             Water4.color = Color.green;
+        }
+        if (IceBerries.text == "0")
+        {
+            IceBerries.color = Color.red;
+        }
+        else
+        {
+            IceBerries.color = Color.green;
         }
         #endregion
     }
