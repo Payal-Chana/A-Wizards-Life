@@ -519,14 +519,11 @@ public class IventoryHandler : MonoBehaviour
         }
         if (item.name == "IceFlower")
         {
-            if (YuriNarrative.GetBooleanVariable("YuriDialogueComplete") == true)
-            {
                 int ItemCount = 0;
                 ItemCount = int.Parse(IceFlowerCount.text);
                 ItemCount++;
                 IceFlowerCount.text = " " + ItemCount;
                 StartCoroutine(DisplayItemPickedUp(IceFlowerP));
-            }
 
         }
         if (item.name == "YetiHair")
