@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5406586068626303269}
   - component: {fileID: 8679861296574833413}
   - component: {fileID: 1923362428816979727}
+  - component: {fileID: 4127616000249543197}
   m_Layer: 0
   m_Name: Daisies
   m_TagString: item
@@ -112,6 +113,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RespawnTime: 0
   Player: {fileID: 0}
+--- !u!65 &4127616000249543197
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3192127865224488896}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.59, y: 3.48, z: 2.69}
+  m_Center: {x: -0.049999997, y: 0.85, z: 0.24999999}
 --- !u!1 &5891126681971171097
 GameObject:
   m_ObjectHideFlags: 0
