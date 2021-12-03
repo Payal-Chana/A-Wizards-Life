@@ -109,7 +109,8 @@ public class IventoryHandler : MonoBehaviour
     [SerializeField] CraftBar craftBar_;
 
     public bool MenuOpen = true;
-
+    public GameObject PauseMenuUI;
+    public bool pausemenuOpen;
     private void Start()
     {
         Snow1.Play();
@@ -178,10 +179,16 @@ public class IventoryHandler : MonoBehaviour
         #endregion
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Open_CloseCraft == 0) // craft is not open
+            pausemenuOpen = true;
+            PauseMenuUI.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            /*if (Open_CloseCraft == 0) // craft is not open
             {//Change This to Inventory
-                Application.Quit();
-            }
+                //Application.Quit();
+                
+
+            }*/
         }
         #region Narrative
         if (IntroNarrative.GetBooleanVariable("mouseLock") == true) 
@@ -230,17 +237,28 @@ public class IventoryHandler : MonoBehaviour
         }
         else if (IntroNarrative.GetBooleanVariable("mouseLock") == false && Open_CloseCraft == 0)
         {
-            GiddeonCam.gameObject.SetActive(false);
-            MargotCam.gameObject.SetActive(false);
-            YuriCam.gameObject.SetActive(false);
-            Debug.Log("The player  move!!!");
-            playerController.canPlayerMove = true;
-            MainCam.m_YAxis.m_MaxSpeed = 1.5f;
-            MainCam.m_XAxis.m_MaxSpeed = 200;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            if (pausemenuOpen == false)
+            {
+                GiddeonCam.gameObject.SetActive(false);
+                MargotCam.gameObject.SetActive(false);
+                YuriCam.gameObject.SetActive(false);
+                Debug.Log("The player  move!!!");
+                playerController.canPlayerMove = true;
+                MainCam.m_YAxis.m_MaxSpeed = 1.5f;
+                MainCam.m_XAxis.m_MaxSpeed = 200;
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            else if (pausemenuOpen == true)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+
 
         }
+
+
 
         /*if (YuriNarrative.GetBooleanVariable("yuriMouseLock") == true)
         {
@@ -310,6 +328,10 @@ public class IventoryHandler : MonoBehaviour
             
         }
         #endregion
+    }
+    public void ClosePauseMenu()
+    {
+        pausemenuOpen = false;
     }
 
     private void OnTriggerEnter(Collider other)
