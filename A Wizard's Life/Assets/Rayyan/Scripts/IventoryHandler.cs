@@ -578,7 +578,11 @@ public class IventoryHandler : MonoBehaviour
             ItemCount = int.Parse(HeatPotionCount.text);
             ItemCount++;
             HeatPotionCount.text = " " + ItemCount;
-            HeatPotion.ExecuteBlock("GotHeatPotion");
+            if (YuriNarrative.GetBooleanVariable("YuriDialogueComplete") == true)
+            {
+                HeatPotion.ExecuteBlock("GotHeatPotion");
+            }
+
 
         }
         if (item.name == "SpeedPotion")
