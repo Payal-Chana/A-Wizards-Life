@@ -320,13 +320,13 @@ public class IventoryHandler : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.T))
+        /*if (Input.GetKeyDown(KeyCode.T))
         {
             Debug.Log("Test Success!");
             StartCoroutine(SnowSystem());
             //Debug.Log(WaterCount.text);
             
-        }
+        }*/
         #endregion
     }
     public void ClosePauseMenu()
