@@ -505,11 +505,14 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '- All Art Assets and Coding by Juliette Love, Payal Chana and Rayyan Gafoor.
-
-    Sound
-
-    -'
+  m_Text: "- All Art Assets and Coding by Juliette Love, Payal Chana and Rayyan Gafoor.\n-
+    Fungus. 2021. Fungus. [online] Available at: <https://fungusgames.com/> [Accessed
+    3 December 2021].\n\nSound\n\nForest Walk by Alexander Nakarada | https://www.serpentsoundstudios.com/\r\nMusic
+    promoted by https://www.chosic.com/free-music/all/\r\nAttribution 4.0 International
+    (CC BY 4.0)\r\nhttps://creativecommons.org/licenses/by/4.0/\r\nModifications:
+    This audio has been clipped and looped. \r\n\r\nBlackbird in forest (some other
+    bird noise in background) by Zapsplat is licensed under CC0 1.0 Universal License.
+    https://www.zapsplat.com/music/blackbird-in-forest-some-other-bird-noise-in-background/"
 --- !u!222 &430436059
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1208,7 +1211,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &943428881
 RectTransform:
   m_ObjectHideFlags: 0
