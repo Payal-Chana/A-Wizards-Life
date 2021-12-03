@@ -61,7 +61,7 @@ public class UsePotions : MonoBehaviour
         {
             if (1 <= int.Parse(inventory.HeatPotionCount.text))
             {
-                HeatPart.Play();
+                //HeatPart.Play();
                 melter.Melting = true;
                 inventory.RemoveItem(HeatPotionItem);
                 HeatDialogue.ExecuteBlock("UsedHeatPotion");
