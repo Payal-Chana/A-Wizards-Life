@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    public float RespawnTime;
+    
     public GameObject Player;
     IventoryHandler inventory;
+    public float RespawnItemTime = 0f;
 
     private void Awake()
     {
@@ -17,4 +18,12 @@ public class Item : MonoBehaviour
         inventory.PickUpText.SetActive(false);
         gameObject.SetActive(false);
     }
+    // Use this to allow item to respawn in world ( gowth effect )
+/*
+    public IEnumerator DisableToGrowBack()
+    {
+        gameObject.SetActive(false);
+        yield return new WaitForSeconds(RespawnItemTime);
+        gameObject.SetActive(true);
+    }*/
 }

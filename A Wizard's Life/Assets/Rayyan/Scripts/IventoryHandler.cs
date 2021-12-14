@@ -185,15 +185,12 @@ public class IventoryHandler : MonoBehaviour
             Cursor.visible = true;
             /*if (Open_CloseCraft == 0) // craft is not open
             {//Change This to Inventory
-                //Application.Quit();
-                
-
+                We can add to this to close the inventory system using escape as well.
             }*/
         }
         #region Narrative
         if (IntroNarrative.GetBooleanVariable("mouseLock") == true) 
         {
-            //GiddeonCam.gameObject.SetActive(true);
             
             playerController.canPlayerMove = false;
             MainCam.m_YAxis.m_MaxSpeed = 0;
@@ -260,73 +257,7 @@ public class IventoryHandler : MonoBehaviour
 
 
 
-        /*if (YuriNarrative.GetBooleanVariable("yuriMouseLock") == true)
-        {
-            //GiddeonCam.gameObject.SetActive(true);
-            Debug.Log("Im Talking to Yuri");
-            YuriCam.gameObject.SetActive(true);
-            MainCam.m_YAxis.m_MaxSpeed = 0;
-            MainCam.m_XAxis.m_MaxSpeed = 0;
-            playerController.canPlayerMove = false;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else if (YuriNarrative.GetBooleanVariable("yuriMouseLock") == false && Open_CloseCraft == 0)
-        {
-            //GiddeonCam.gameObject.SetActive(false);
-            YuriCam.gameObject.SetActive(false);
-            MainCam.m_YAxis.m_MaxSpeed = 1.5f;
-            MainCam.m_XAxis.m_MaxSpeed = 200;
-            playerController.canPlayerMove = true;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-
-         if (MargothNarrative.GetBooleanVariable("MargothMouseLock") == true)
-        {
-            //GiddeonCam.gameObject.SetActive(true);
-            MargotCam.gameObject.SetActive(true);
-            MainCam.m_YAxis.m_MaxSpeed = 0;
-            MainCam.m_XAxis.m_MaxSpeed = 0;
-            playerController.canPlayerMove = false;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else if (MargothNarrative.GetBooleanVariable("MargothMouseLock") == false && Open_CloseCraft == 0)
-        {
-            //GiddeonCam.gameObject.SetActive(false);
-            MargotCam.gameObject.SetActive(false);
-            MainCam.m_YAxis.m_MaxSpeed = 1.5f;
-            MainCam.m_XAxis.m_MaxSpeed = 200;
-            playerController.canPlayerMove = true;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-
-        else if (LoseBook.GetBooleanVariable("LoseBookMouseLock") == true)
-        {
-            //GiddeonCam.gameObject.SetActive(true);
-
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else if (LoseBook.GetBooleanVariable("LoseBookMouseLock") == false && Open_CloseCraft == 0)
-        {
-            //GiddeonCam.gameObject.SetActive(false);
-
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }*/
-
-
-
-        /*if (Input.GetKeyDown(KeyCode.T))
-        {
-            Debug.Log("Test Success!");
-            StartCoroutine(SnowSystem());
-            //Debug.Log(WaterCount.text);
-            
-        }*/
+       
         #endregion
     }
     public void ClosePauseMenu()
@@ -399,21 +330,7 @@ public class IventoryHandler : MonoBehaviour
                     SpeedPotion.ExecuteBlock("GotIngredients");
                 }
 
-                /*HeatPotion.SetBooleanVariable("hasHeatWater", true);
-                Debug.Log("Should get water");
-                if (HeatPotion.GetBooleanVariable("hasChillies") == false && HeatPotion.GetBooleanVariable("hasHeatWater") == true)
-                {
-                    HeatPotion.ExecuteBlock("Water");
-                }
-
-                else if (HeatPotion.GetBooleanVariable("hasChillies") == true && HeatPotion.GetBooleanVariable("hasHeatWater") == false)
-                {
-                    HeatPotion.ExecuteBlock("Chillies");
-                }
-                else if (HeatPotion.GetBooleanVariable("hasChillies") == true && HeatPotion.GetBooleanVariable("hasHeatWater") == true)
-                {
-                    HeatPotion.ExecuteBlock("GotHeatIngredients");
-                }*/
+               
 
             }
 
@@ -454,26 +371,7 @@ public class IventoryHandler : MonoBehaviour
             ItemCount++;
             ChilliCount.text = " " + ItemCount;
             StartCoroutine(DisplayItemPickedUp(ChilliP));
-            /*if (ItemCount > 0)
-            {
-               HeatPotion.SetBooleanVariable("hasChillies", true);
-                Debug.Log("Should have chillies");
-                if (HeatPotion.GetBooleanVariable("hasChillies") == false && HeatPotion.GetBooleanVariable("hasWater") == true)
-                {
-                    HeatPotion.ExecuteBlock("Chillies");
-                }
-
-                else if (HeatPotion.GetBooleanVariable("hasChillies") == true && HeatPotion.GetBooleanVariable("hasWater") == false)
-                {
-                    HeatPotion.ExecuteBlock("Chillies");
-                }
-                else if (HeatPotion.GetBooleanVariable("hasChillies") == true && HeatPotion.GetBooleanVariable("hasWater") == true)
-                {
-                    HeatPotion.ExecuteBlock("GotHeatIngredients");
-                }
-
-            }*/
-
+            
         }     
         if (item.name == "LavaWeed")
         {
@@ -1334,3 +1232,109 @@ public class IventoryHandler : MonoBehaviour
     }
 }
 
+#region Null
+/*if (YuriNarrative.GetBooleanVariable("yuriMouseLock") == true)
+       {
+           //GiddeonCam.gameObject.SetActive(true);
+           Debug.Log("Im Talking to Yuri");
+           YuriCam.gameObject.SetActive(true);
+           MainCam.m_YAxis.m_MaxSpeed = 0;
+           MainCam.m_XAxis.m_MaxSpeed = 0;
+           playerController.canPlayerMove = false;
+           Cursor.lockState = CursorLockMode.None;
+           Cursor.visible = true;
+       }
+       else if (YuriNarrative.GetBooleanVariable("yuriMouseLock") == false && Open_CloseCraft == 0)
+       {
+           //GiddeonCam.gameObject.SetActive(false);
+           YuriCam.gameObject.SetActive(false);
+           MainCam.m_YAxis.m_MaxSpeed = 1.5f;
+           MainCam.m_XAxis.m_MaxSpeed = 200;
+           playerController.canPlayerMove = true;
+           Cursor.lockState = CursorLockMode.Locked;
+           Cursor.visible = false;
+       }
+
+        if (MargothNarrative.GetBooleanVariable("MargothMouseLock") == true)
+       {
+           //GiddeonCam.gameObject.SetActive(true);
+           MargotCam.gameObject.SetActive(true);
+           MainCam.m_YAxis.m_MaxSpeed = 0;
+           MainCam.m_XAxis.m_MaxSpeed = 0;
+           playerController.canPlayerMove = false;
+           Cursor.lockState = CursorLockMode.None;
+           Cursor.visible = true;
+       }
+       else if (MargothNarrative.GetBooleanVariable("MargothMouseLock") == false && Open_CloseCraft == 0)
+       {
+           //GiddeonCam.gameObject.SetActive(false);
+           MargotCam.gameObject.SetActive(false);
+           MainCam.m_YAxis.m_MaxSpeed = 1.5f;
+           MainCam.m_XAxis.m_MaxSpeed = 200;
+           playerController.canPlayerMove = true;
+           Cursor.lockState = CursorLockMode.Locked;
+           Cursor.visible = false;
+       }
+
+       else if (LoseBook.GetBooleanVariable("LoseBookMouseLock") == true)
+       {
+           //GiddeonCam.gameObject.SetActive(true);
+
+           Cursor.lockState = CursorLockMode.None;
+           Cursor.visible = true;
+       }
+       else if (LoseBook.GetBooleanVariable("LoseBookMouseLock") == false && Open_CloseCraft == 0)
+       {
+           //GiddeonCam.gameObject.SetActive(false);
+
+           Cursor.lockState = CursorLockMode.Locked;
+           Cursor.visible = false;
+       }*/
+
+
+
+/*if (Input.GetKeyDown(KeyCode.T))
+{
+    Debug.Log("Test Success!");
+    StartCoroutine(SnowSystem());
+    //Debug.Log(WaterCount.text);
+
+}*/
+
+/*if (ItemCount > 0)
+        {
+           HeatPotion.SetBooleanVariable("hasChillies", true);
+            Debug.Log("Should have chillies");
+            if (HeatPotion.GetBooleanVariable("hasChillies") == false && HeatPotion.GetBooleanVariable("hasWater") == true)
+            {
+                HeatPotion.ExecuteBlock("Chillies");
+            }
+
+            else if (HeatPotion.GetBooleanVariable("hasChillies") == true && HeatPotion.GetBooleanVariable("hasWater") == false)
+            {
+                HeatPotion.ExecuteBlock("Chillies");
+            }
+            else if (HeatPotion.GetBooleanVariable("hasChillies") == true && HeatPotion.GetBooleanVariable("hasWater") == true)
+            {
+                HeatPotion.ExecuteBlock("GotHeatIngredients");
+            }
+
+        }*/
+
+/*HeatPotion.SetBooleanVariable("hasHeatWater", true);
+           Debug.Log("Should get water");
+           if (HeatPotion.GetBooleanVariable("hasChillies") == false && HeatPotion.GetBooleanVariable("hasHeatWater") == true)
+           {
+               HeatPotion.ExecuteBlock("Water");
+           }
+
+           else if (HeatPotion.GetBooleanVariable("hasChillies") == true && HeatPotion.GetBooleanVariable("hasHeatWater") == false)
+           {
+               HeatPotion.ExecuteBlock("Chillies");
+           }
+           else if (HeatPotion.GetBooleanVariable("hasChillies") == true && HeatPotion.GetBooleanVariable("hasHeatWater") == true)
+           {
+               HeatPotion.ExecuteBlock("GotHeatIngredients");
+           }*/
+
+#endregion
